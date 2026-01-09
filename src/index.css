@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+body {
+     background-color: #f0f5f9;
+     font-family: Outfit, sans-serif;
+}
+
+@keyframes slideIn {
+     from {
+          transform: translateY(-20px);
+          opacity: 0;
+     }
+
+     to {
+          transform: translateY(0);
+          opacity: 1;
+     }
+}
+
+@keyframes slideOut {
+     from {
+          transform: translateY(0);
+          opacity: 1;
+     }
+
+     to {
+          transform: translateY(-20px);
+          opacity: 0;
+     }
+}
+
+.animate-enter {
+     animation: slideIn 0.3s ease-in forwards;
+}
+
+.animate-leave {
+     animation: slideOut 0.3s ease-out forwards;
+}
+
+input {
+     outline: none;
+}
