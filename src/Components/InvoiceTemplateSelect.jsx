@@ -17,6 +17,7 @@ export function InvoiceTemplateSelect() {
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Templates</SelectLabel>
+          <SelectItem value="Classic">Classic</SelectItem>
           <SelectItem value="Soft Shadow">Soft Shadow</SelectItem>
           <SelectItem value="Stripe Edge">Stripe Edge</SelectItem>
           <SelectItem value="Corporate">Corporate</SelectItem>

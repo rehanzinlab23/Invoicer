@@ -45,7 +45,9 @@ const Classic = ({ items, setItems, sellerName, customerName }) => {
             <thead>
               <tr className="border-b border-[#e5e7eb] text-[#737373] hover:bg-gray-50">
                 <th className="h-12 px-4 text-left font-medium w-15">#</th>
-                <th className="h-12 px-4 text-left font-medium">Item Name</th>
+                <th className="h-12 px-4 text-left font-medium whitespace-nowrap">
+                  Item Name
+                </th>
                 <th className="h-12 px-4 text-left font-medium">Quantity</th>
                 <th className="h-12 px-4 text-left font-medium">Price</th>
                 <th className="h-12 px-4 text-left font-medium">Discount</th>

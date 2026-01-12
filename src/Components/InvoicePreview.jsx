@@ -1,7 +1,12 @@
 import Line from "./Line";
 import InvoiceActions from "./InvoiceActions";
-import Classic from "../Templates/Classic";
 import { InvoiceTemplateSelect } from "./InvoiceTemplateSelect";
+// import Classic from "../Templates/Classic";
+import SoftShadow from "../Templates/SoftShadow";
+// import StripeEdge from "../Templates/StripeEdge";
+// import Corporate from "../Templates/Corporate";
+// import Elegant from "../Templates/Elegant";
+// import Minimal from "../Templates/Minimal";
 
 const InvoicePreview = ({ items, setItems, sellerName, customerName }) => {
   return (
@@ -17,13 +22,49 @@ const InvoicePreview = ({ items, setItems, sellerName, customerName }) => {
         <Line />
         <div className="p-6 pt-0">
           <div id="invoice-content">
+            {/* Templates */}
             {/* Classic */}
-            <Classic
+            {/* <Classic
+              items={items}
+              setItems={setItems}
+              sellerName={sellerName}
+              customerName={customerName}
+            /> */}
+            {/* Soft Shadow */}
+            <SoftShadow
               items={items}
               setItems={setItems}
               sellerName={sellerName}
               customerName={customerName}
             />
+            {/* Stripe Edge */}
+            {/* <StripeEdge
+              items={items}
+              setItems={setItems}
+              sellerName={sellerName}
+              customerName={customerName}
+            /> */}
+            {/* Corporate */}
+            {/* <Corporate
+              items={items}
+              setItems={setItems}
+              sellerName={sellerName}
+              customerName={customerName}
+            /> */}
+            {/* Elegant */}
+            {/* <Elegant
+              items={items}
+              setItems={setItems}
+              sellerName={sellerName}
+              customerName={customerName}
+            /> */}
+            {/* Minimal */}
+            {/* <Minimal
+              items={items}
+              setItems={setItems}
+              sellerName={sellerName}
+              customerName={customerName}
+            /> */}
           </div>
         </div>
       </div>
