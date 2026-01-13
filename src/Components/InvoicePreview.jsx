@@ -2,13 +2,19 @@ import Line from "./Line";
 import InvoiceActions from "./InvoiceActions";
 import { InvoiceTemplateSelect } from "./InvoiceTemplateSelect";
 // import Classic from "../Templates/Classic";
-import SoftShadow from "../Templates/SoftShadow";
+// import SoftShadow from "../Templates/SoftShadow";
 // import StripeEdge from "../Templates/StripeEdge";
 // import Corporate from "../Templates/Corporate";
 // import Elegant from "../Templates/Elegant";
-// import Minimal from "../Templates/Minimal";
+import Minimal from "../Templates/Minimal";
 
-const InvoicePreview = ({ items, setItems, sellerName, customerName }) => {
+const InvoicePreview = ({
+  items,
+  setItems,
+  sellerName,
+  customerName,
+  invoiceId,
+}) => {
   return (
     <div className="mt-10">
       <div className="rounded-lg border border-[#e5e7eb] bg-white text-black shadow-sm">
@@ -31,18 +37,20 @@ const InvoicePreview = ({ items, setItems, sellerName, customerName }) => {
               customerName={customerName}
             /> */}
             {/* Soft Shadow */}
-            <SoftShadow
+            {/* <SoftShadow
               items={items}
               setItems={setItems}
               sellerName={sellerName}
               customerName={customerName}
-            />
+              invoiceId={invoiceId}
+            /> */}
             {/* Stripe Edge */}
             {/* <StripeEdge
               items={items}
               setItems={setItems}
               sellerName={sellerName}
               customerName={customerName}
+              invoiceId={invoiceId}
             /> */}
             {/* Corporate */}
             {/* <Corporate
@@ -50,6 +58,7 @@ const InvoicePreview = ({ items, setItems, sellerName, customerName }) => {
               setItems={setItems}
               sellerName={sellerName}
               customerName={customerName}
+              invoiceId={invoiceId}
             /> */}
             {/* Elegant */}
             {/* <Elegant
@@ -57,14 +66,16 @@ const InvoicePreview = ({ items, setItems, sellerName, customerName }) => {
               setItems={setItems}
               sellerName={sellerName}
               customerName={customerName}
+              invoiceId={invoiceId}
             /> */}
             {/* Minimal */}
-            {/* <Minimal
+            <Minimal
               items={items}
               setItems={setItems}
               sellerName={sellerName}
               customerName={customerName}
-            /> */}
+              invoiceId={invoiceId}
+            />
           </div>
         </div>
       </div>

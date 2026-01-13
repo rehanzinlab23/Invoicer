@@ -26,6 +26,7 @@ const Classic = ({ items, setItems, sellerName, customerName }) => {
           Date: <span className="text-[#555]">{today}</span>
         </span>
       </div>
+      {/* Customer Name */}
       <div className="sm:flex items-center justify-between">
         <div className="flex items-center gap-2 mt-4">
           <h3 className="font-semibold">Seller Name:</h3>
@@ -36,6 +37,7 @@ const Classic = ({ items, setItems, sellerName, customerName }) => {
           <h4>{customerName}</h4>
         </div>
       </div>
+      {/* Table */}
       <div className="mt-4">
         <div className="relative w-full overflow-auto">
           <table className="w-full caption-bottom text-sm border-collapse">
@@ -65,7 +67,7 @@ const Classic = ({ items, setItems, sellerName, customerName }) => {
                     className="border-b border-[#e5e7eb] hover:bg-gray-50"
                   >
                     <td className="p-4">{index + 1}</td>
-                    <td className="p-4 capitalize">{item.itemName}</td>
+                    <td className="p-4 uppercase">{item.itemName}</td>
                     <td className="p-4">{item.count}</td>
                     <td className="p-4">{item.price}</td>
                     <td className="p-4">{item.discount}</td>

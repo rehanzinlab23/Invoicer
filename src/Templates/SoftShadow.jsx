@@ -1,9 +1,14 @@
 import { today } from "../todayDate";
-import { RandomNumber } from "../RandomNumber";
-import { Trash2 } from "lucide-react";
 import { currentTime } from "../Time";
+import { Trash2 } from "lucide-react";
 
-const SoftShadow = ({ items, setItems, sellerName, customerName }) => {
+const SoftShadow = ({
+  items,
+  setItems,
+  sellerName,
+  customerName,
+  invoiceId,
+}) => {
   const deleteItem = (index) => {
     const updatedItems = [...items];
     updatedItems.splice(index, 1);
@@ -45,9 +50,7 @@ const SoftShadow = ({ items, setItems, sellerName, customerName }) => {
             <h1 className="text-[30px] font-semibold text-[#1e293b] mb-1">
               Invoice
             </h1>
-            <div className="text-slate-500 font-medium">
-              ##INV-{RandomNumber()}
-            </div>
+            <div className="text-slate-500 font-medium">##INV-{invoiceId}</div>
           </div>
           <span className="font-medium max-sm:mt-2 text-[#1e293b]">
             Date: <span className="text-[#555]">{today}</span>
@@ -98,7 +101,9 @@ const SoftShadow = ({ items, setItems, sellerName, customerName }) => {
                 return (
                   <tr key={index} className="hover:bg-gray-50">
                     <td className="py-3.5 px-3 text-[14px] align-top font-medium text-[#1e293b] whitespace-nowrap">
-                      <div className="font-medium mb-0.5">{item.itemName}</div>
+                      <div className="font-medium mb-0.5 uppercase">
+                        {item.itemName}
+                      </div>
                       <div className="text-[0.9em] opacity-70">
                         Item #{index + 1}
                       </div>
@@ -142,15 +147,15 @@ const SoftShadow = ({ items, setItems, sellerName, customerName }) => {
           </div>
         </div>
       </div>
-      {/* Footer Lines */}
-      <div className="text-center text-[#64748b] mt-3 font-[14px] pb-5">
-        <div>Thank you for coming to our store!</div>
-        <div>
+      {/* Footer Message */}
+      {items.length > 0 && (
+        <div className="text-center text-[#64748b] mt-3 font-[14px] pb-5">
+          <div>Thank you for coming to our store!</div>
           <div>
             Generated on {today} at {currentTime}
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

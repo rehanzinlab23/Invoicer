@@ -58,6 +58,7 @@ const Invoice = ({
     };
 
     setItems([...items, newItem]);
+
     toast.success("You added a new item!");
 
     setItemName("");
@@ -76,9 +77,7 @@ const Invoice = ({
               New Invoice
             </div>
           </h3>
-          <p className="text-sm text-muted-foreground font-medium text-gray-500">
-            Generate Invoice
-          </p>
+          <p className="text-sm font-medium text-gray-500">Generate Invoice</p>
         </div>
         <Line />
         <div className="p-6 pt-0">

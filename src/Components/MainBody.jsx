@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import InvoicePreview from "./InvoicePreview";
 import Invoice from "./Invoice";
+import { RandomNumber } from "../RandomNumber";
 
 const MainBody = () => {
   const [items, setItems] = useState([]);
   const [sellerName, setSellerName] = useState("Rehan Hussain");
   const [customerName, setCustomerName] = useState("");
   const [searchItems, setSearchItems] = useState("");
+  const invoiceId = useMemo(() => {
+    return RandomNumber();
+  }, []);
+
   const filteredItem = items.filter((item) => {
     return item.itemName.toLowerCase().includes(searchItems.toLowerCase());
   });
@@ -31,6 +36,7 @@ const MainBody = () => {
         sellerName={sellerName}
         customerName={customerName}
         searchItems={searchItems}
+        invoiceId={invoiceId}
       />
       <Toaster position="bottom-right" reverseOrder={true} />
     </div>
