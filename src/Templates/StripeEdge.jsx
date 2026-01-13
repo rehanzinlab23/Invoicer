@@ -15,7 +15,6 @@ const StripeEdge = ({
     setItems(updatedItems);
   };
 
-  // --- Simplified Calculations (No Tax) ---
   const calculateSubtotal = () => {
     return items.reduce((acc, item) => acc + item.price * item.count, 0);
   };

@@ -1,6 +1,6 @@
 import { today } from "../todayDate";
 import { currentTime } from "../Time";
-import { Trash2, ShieldCheck, Zap, Tag } from "lucide-react";
+import { Trash2, Zap, Tag } from "lucide-react";
 
 const SoftShadow = ({
   items,
@@ -15,7 +15,6 @@ const SoftShadow = ({
     setItems(updatedItems);
   };
 
-  // --- Fixed Calculations ---
   const getSubtotal = () => {
     return items.reduce((acc, item) => acc + item.price * item.count, 0);
   };

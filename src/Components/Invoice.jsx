@@ -18,8 +18,6 @@ const Invoice = ({
   const [price, setPrice] = useState("");
   const [itemName, setItemName] = useState("");
   const [discount, setDiscount] = useState("0%");
-
-  // Outline removed, added soft glow focus
   const inputStyle =
     "flex h-12 w-full rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm transition-all duration-200 outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10 placeholder:text-slate-400 disabled:cursor-not-allowed disabled:opacity-50";
 
@@ -48,7 +46,6 @@ const Invoice = ({
   return (
     <div className="mt-6 mb-12 max-w-5xl mx-auto px-2 sm:px-6 lg:px-8">
       <div className="overflow-hidden rounded-[32px] border border-white/40 bg-white/30 backdrop-blur-2xl shadow-2xl">
-        {/* Header: Fixed for Mobile */}
         <div className="p-5 sm:p-10 border-b border-slate-200/50">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="space-y-1">
@@ -61,7 +58,7 @@ const Invoice = ({
                 </span>
               </div>
               <p className="text-xs sm:text-sm font-medium text-slate-500 text-pretty">
-                Generate professional receipts in seconds.
+                Generate professional invoice in seconds.
               </p>
             </div>
 
@@ -75,7 +72,7 @@ const Invoice = ({
         </div>
 
         <div className="p-5 sm:p-10 space-y-8 sm:space-y-10">
-          {/* Section 1: Parties */}
+          {/* Section 1 */}
           <section>
             <div className="flex items-center gap-3 mb-6">
               <div className="p-2 bg-slate-900 rounded-xl shadow-md shrink-0">
@@ -112,7 +109,7 @@ const Invoice = ({
 
           <Line />
 
-          {/* Section 2: Items Search & Details */}
+          {/* Section 2 */}
           <section className="bg-slate-50/60 -mx-5 sm:mx-0 sm:rounded-[24px] p-5 sm:p-8 border-y sm:border border-slate-100">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8">
               <div className="flex items-center gap-3">
@@ -150,8 +147,6 @@ const Invoice = ({
                   onChange={(e) => setItemName(e.target.value)}
                 />
               </div>
-
-              {/* Responsive Grid for Qty, Price, Discount */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 <div>
                   <label className={labelStyle}>Quantity</label>

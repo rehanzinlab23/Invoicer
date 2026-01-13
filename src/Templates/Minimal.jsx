@@ -1,6 +1,6 @@
 import { today } from "../todayDate";
 import { currentTime } from "../Time";
-import { Trash2, Info } from "lucide-react";
+import { Trash2 } from "lucide-react";
 
 const Minimal = ({ items, setItems, sellerName, customerName, invoiceId }) => {
   const deleteItem = (index) => {

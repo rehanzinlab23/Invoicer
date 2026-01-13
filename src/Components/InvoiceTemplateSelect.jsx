@@ -12,7 +12,6 @@ import { Layout } from "lucide-react";
 export function InvoiceTemplateSelect({ value, onChange }) {
   return (
     <div className="flex flex-col gap-2 w-full sm:min-w-60">
-      {/* Small label above the select */}
       <div className="flex items-center gap-2 px-1">
         <Layout size={14} className="text-blue-600" />
         <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
@@ -21,7 +20,6 @@ export function InvoiceTemplateSelect({ value, onChange }) {
       </div>
 
       <Select value={value} onValueChange={onChange}>
-        {/* Important: h-12 for better touch targets on mobile */}
         <SelectTrigger className="w-full h-12 bg-white/60! border-2 border-slate-200 rounded-2xl text-slate-900 font-bold px-4 shadow-sm transition-all focus:ring-4 focus:ring-blue-500/10">
           <SelectValue placeholder="Select Style" />
         </SelectTrigger>

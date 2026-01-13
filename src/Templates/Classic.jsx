@@ -72,68 +72,125 @@ const Classic = ({ items, setItems, sellerName, customerName, invoiceId }) => {
       </div>
 
       {/* Table */}
-      <div className="grow">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="border-b-2 border-gray-900">
-              <th className="py-4 text-left font-black uppercase text-[10px] text-gray-400 tracking-widest w-12">
-                #
-              </th>
-              <th className="py-4 text-left font-black uppercase text-[10px] text-gray-400 tracking-widest">
-                Description
-              </th>
-              <th className="py-4 text-center font-black uppercase text-[10px] text-gray-400 tracking-widest">
-                Qty
-              </th>
-              <th className="py-4 text-right font-black uppercase text-[10px] text-gray-400 tracking-widest">
-                Unit Price
-              </th>
-              <th className="py-4 text-right font-black uppercase text-[10px] text-gray-400 tracking-widest">
-                Discount
-              </th>
-              <th className="py-4 text-right font-black uppercase text-[10px] text-gray-400 tracking-widest">
-                Line Total
-              </th>
-              <th className="py-4 w-10"></th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-100">
-            {items.map((item, index) => {
-              const discPercent = (parseFloat(item.discount) || 0) / 100;
-              const lineTotal = item.price * item.count * (1 - discPercent);
-              return (
-                <tr key={index} className="group hover:bg-gray-50/50">
-                  <td className="py-5 text-gray-400 font-mono text-xs">
-                    {index + 1}
-                  </td>
-                  <td className="py-5 font-bold text-gray-900 uppercase tracking-tight">
-                    {item.itemName}
-                  </td>
-                  <td className="py-5 text-center font-bold text-gray-600">
-                    {item.count}
-                  </td>
-                  <td className="py-5 text-right font-medium text-gray-600">
-                    ${item.price.toFixed(2)}
-                  </td>
-                  <td className="py-5 text-right font-bold text-red-500 italic">
-                    -{item.discount}
-                  </td>
-                  <td className="py-5 text-right font-black text-gray-900">
-                    ${lineTotal.toFixed(2)}
-                  </td>
-                  <td className="py-5 text-right">
-                    <button
-                      onClick={() => deleteItem(index)}
-                      className="p-1 opacity-0 group-hover:opacity-100 hover:text-red-600 transition-all"
-                    >
-                      <Trash2 size={16} />
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+      <div className="grow w-full">
+        <div className="hidden md:block w-full">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b-2 border-gray-900">
+                <th className="py-4 text-left font-black uppercase text-[10px] text-gray-400 tracking-widest w-12">
+                  #
+                </th>
+                <th className="py-4 text-left font-black uppercase text-[10px] text-gray-400 tracking-widest">
+                  Description
+                </th>
+                <th className="py-4 text-center font-black uppercase text-[10px] text-gray-400 tracking-widest">
+                  Qty
+                </th>
+                <th className="py-4 text-right font-black uppercase text-[10px] text-gray-400 tracking-widest">
+                  Unit Price
+                </th>
+                <th className="py-4 text-right font-black uppercase text-[10px] text-gray-400 tracking-widest">
+                  Discount
+                </th>
+                <th className="py-4 text-right font-black uppercase text-[10px] text-gray-400 tracking-widest">
+                  Line Total
+                </th>
+                <th className="py-4 w-10"></th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {items.map((item, index) => {
+                const discPercent = (parseFloat(item.discount) || 0) / 100;
+                const lineTotal = item.price * item.count * (1 - discPercent);
+                return (
+                  <tr key={index} className="group hover:bg-gray-50/50">
+                    <td className="py-5 text-gray-400 font-mono text-xs">
+                      {index + 1}
+                    </td>
+                    <td className="py-5 font-bold text-gray-900 uppercase tracking-tight">
+                      {item.itemName}
+                    </td>
+                    <td className="py-5 text-center font-bold text-gray-600">
+                      {item.count}
+                    </td>
+                    <td className="py-5 text-right font-medium text-gray-600">
+                      ${item.price.toFixed(2)}
+                    </td>
+                    <td className="py-5 text-right font-bold text-red-500 italic">
+                      -{item.discount}
+                    </td>
+                    <td className="py-5 text-right font-black text-gray-900">
+                      ${lineTotal.toFixed(2)}
+                    </td>
+                    <td className="py-5 text-right">
+                      <button
+                        onClick={() => deleteItem(index)}
+                        className="p-1 opacity-0 group-hover:opacity-100 hover:text-red-600 transition-all"
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        <div className="md:hidden space-y-4">
+          {items.map((item, index) => {
+            const discPercent = (parseFloat(item.discount) || 0) / 100;
+            const lineTotal = item.price * item.count * (1 - discPercent);
+            return (
+              <div
+                key={index}
+                className="relative p-4 rounded-2xl border border-gray-100 bg-gray-50/30"
+              >
+                <button
+                  onClick={() => deleteItem(index)}
+                  className="absolute top-4 right-4 text-gray-400 hover:text-red-600"
+                >
+                  <Trash2 size={18} />
+                </button>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-mono text-gray-400">
+                      #{index + 1}
+                    </span>
+                    <h4 className="font-black text-gray-900 uppercase text-sm">
+                      {item.itemName}
+                    </h4>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4 pt-2 border-t border-gray-100">
+                    <div>
+                      <p className="text-[9px] text-gray-400 uppercase font-black">
+                        Qty x Price
+                      </p>
+                      <p className="text-sm font-bold text-gray-700">
+                        {item.count} × ${item.price.toFixed(2)}
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-[9px] text-gray-400 uppercase font-black">
+                        Discount
+                      </p>
+                      <p className="text-sm font-bold text-red-500">
+                        -{item.discount}
+                      </p>
+                    </div>
+                    <div className="col-span-2 pt-2">
+                      <p className="text-[9px] text-gray-400 uppercase font-black">
+                        Line Total
+                      </p>
+                      <p className="text-lg font-black text-gray-900">
+                        ${lineTotal.toFixed(2)}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
 
         {items.length === 0 && (
           <div className="py-20 text-center border-2 border-dashed border-gray-100 rounded-xl mt-6">

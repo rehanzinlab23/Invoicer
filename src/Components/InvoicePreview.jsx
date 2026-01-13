@@ -1,10 +1,7 @@
 import { useState, useRef } from "react";
-import { Layout, Eye, Download, Printer } from "lucide-react";
-import Line from "./Line";
+import { Eye } from "lucide-react";
 import InvoiceActions from "./InvoiceActions";
 import { InvoiceTemplateSelect } from "./InvoiceTemplateSelect";
-
-// Templates Import
 import Classic from "../Templates/Classic";
 import SoftShadow from "../Templates/SoftShadow";
 import StripeEdge from "../Templates/StripeEdge";
@@ -81,7 +78,7 @@ const InvoicePreview = ({
 
   return (
     <div className="mt-12 max-w-5xl mx-auto px-4 pb-20">
-      {/* --- Section Header --- */}
+      {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
@@ -99,9 +96,6 @@ const InvoicePreview = ({
 
         {/* Template Selector Card */}
         <div className="bg-white p-2 rounded-xl border border-gray-200 shadow-sm flex items-center gap-3">
-          <span className="pl-3 text-xs font-bold text-gray-400 uppercase flex items-center gap-2">
-            <Layout size={14} /> Style
-          </span>
           <InvoiceTemplateSelect
             value={selectedTemplate}
             onChange={setSelectedTemplate}
@@ -109,13 +103,11 @@ const InvoicePreview = ({
         </div>
       </div>
 
-      {/* --- Preview Canvas --- */}
+      {/* Canvas */}
       <div className="relative group">
-        {/* Decorative elements for the "Canvas" feel */}
         <div className="absolute -inset-1 bg-linear-to-r from-gray-200 to-gray-100 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-
         <div className="relative rounded-2xl border border-gray-200 bg-gray-50/50 shadow-2xl overflow-hidden">
-          {/* Top Bar of the Canvas */}
+          {/* Top Bar */}
           <div className="flex items-center justify-between px-6 py-3 bg-white border-b border-gray-200">
             <div className="flex gap-1.5">
               <div className="w-3 h-3 rounded-full bg-red-400"></div>
@@ -126,8 +118,6 @@ const InvoicePreview = ({
               Template: {selectedTemplate}
             </span>
           </div>
-
-          {/* Actual Invoice Content */}
           <div className="p-4 md:p-10 flex justify-center overflow-x-auto">
             <div
               id="invoice-content"
@@ -139,17 +129,9 @@ const InvoicePreview = ({
           </div>
         </div>
       </div>
-
-      {/* --- Action Buttons Container --- */}
       <div className="mt-8">
         <InvoiceActions invoiceRef={invoiceRef} />
       </div>
-
-      {/* Helper Note */}
-      <p className="mt-4 text-center text-sm text-gray-400">
-        Changes are saved automatically. Ensure all details are correct before
-        downloading.
-      </p>
     </div>
   );
 };

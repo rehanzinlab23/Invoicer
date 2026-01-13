@@ -8,7 +8,6 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 w-full px-3 py-4 sm:px-6 sm:py-6">
       <div className="max-w-7xl mx-auto">
-        {/* Adjusted height and padding for mobile (h-16 on mobile, h-20 on desktop) */}
         <div className="relative overflow-hidden rounded-4xl sm:rounded-3xl border border-white/40 bg-white/20 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] h-16 sm:h-20 flex items-center px-4 sm:px-8 transition-all duration-500">
           <div className="absolute inset-0 bg-linear-to-tr from-white/20 via-white/5 to-transparent pointer-events-none"></div>
 
@@ -31,18 +30,12 @@ const Navbar = () => {
                 </span>
               </div>
             </div>
-
-            {/* Right Side Section */}
             <div className="flex items-center gap-3 sm:gap-6">
-              {/* Divider: Hidden on very small screens */}
               <div className="h-6 w-px bg-slate-900/10 hidden xs:block"></div>
-
               <div className="flex items-center gap-2 sm:gap-4">
-                {/* Mode Label: Desktop only */}
                 <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-slate-500 hidden md:block">
                   {isDark ? "Dark" : "Light"}
                 </span>
-
                 {/* Theme Toggle Button */}
                 <button
                   onClick={() => setIsDark(!isDark)}
