@@ -1,7 +1,8 @@
 import { today } from "../todayDate";
 import { Trash2 } from "lucide-react";
+import { currentTime } from "../Time";
 
-const Classic = ({ items, setItems, sellerName, customerName }) => {
+const Classic = ({ items, setItems, sellerName, customerName, invoiceId }) => {
   const deleteItem = (index) => {
     const updatedItems = [...items];
     updatedItems.splice(index, 1);
@@ -21,7 +22,9 @@ const Classic = ({ items, setItems, sellerName, customerName }) => {
   return (
     <div className="my-3 pt-4">
       <div className="sm:flex items-center justify-between ">
-        <h4 className="text-2xl uppercase font-semibold">Invoice #</h4>
+        <h4 className="text-2xl uppercase font-semibold">
+          Invoice <span className="text-[#555] text-xl">##INV-{invoiceId}</span>
+        </h4>
         <span className="font-medium max-sm:mt-2">
           Date: <span className="text-[#555]">{today}</span>
         </span>
@@ -40,10 +43,7 @@ const Classic = ({ items, setItems, sellerName, customerName }) => {
       {/* Table */}
       <div className="mt-4">
         <div className="relative w-full overflow-auto">
-          <table className="w-full caption-bottom text-sm border-collapse">
-            <caption className="mt-4 text-sm text-[#737373] mb-2">
-              Thanks For Coming in Data General Store
-            </caption>
+          <table className="w-full text-sm border-collapse mt-4">
             <thead>
               <tr className="border-b border-[#e5e7eb] text-[#737373] hover:bg-gray-50">
                 <th className="h-12 px-4 text-left font-medium w-15">#</th>
@@ -67,7 +67,7 @@ const Classic = ({ items, setItems, sellerName, customerName }) => {
                     className="border-b border-[#e5e7eb] hover:bg-gray-50"
                   >
                     <td className="p-4">{index + 1}</td>
-                    <td className="p-4 uppercase">{item.itemName}</td>
+                    <td className="p-4">{item.itemName}</td>
                     <td className="p-4">{item.count}</td>
                     <td className="p-4">{item.price}</td>
                     <td className="p-4">{item.discount}</td>
@@ -96,6 +96,17 @@ const Classic = ({ items, setItems, sellerName, customerName }) => {
           </table>
         </div>
       </div>
+      {/* Footer Message */}
+      {items.length > 0 && (
+        <div className="text-left mt-7 pt-4 text-[13px] text-[#64748b]">
+          <div className="text-center text-[#64748b] mt-3 font-[14px] pb-5">
+            <div>Thank you for coming to our store!</div>
+            <div>
+              Generated on {today} at {currentTime}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

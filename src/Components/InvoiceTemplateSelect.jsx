@@ -8,18 +8,25 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export function InvoiceTemplateSelect() {
+export function InvoiceTemplateSelect({ value, onChange }) {
   return (
-    <Select>
-      <SelectTrigger className="w-45">
+    <Select
+      value={value}
+      onValueChange={(val) => {
+        onChange(val);
+      }}
+    >
+      <SelectTrigger className="w-48">
         <SelectValue placeholder="Select Template" />
       </SelectTrigger>
+
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Templates</SelectLabel>
+
           <SelectItem value="Classic">Classic</SelectItem>
-          <SelectItem value="Soft Shadow">Soft Shadow</SelectItem>
-          <SelectItem value="Stripe Edge">Stripe Edge</SelectItem>
+          <SelectItem value="SoftShadow">Soft Shadow</SelectItem>
+          <SelectItem value="StripeEdge">Stripe Edge</SelectItem>
           <SelectItem value="Corporate">Corporate</SelectItem>
           <SelectItem value="Elegant">Elegant</SelectItem>
           <SelectItem value="Minimal">Minimal</SelectItem>
