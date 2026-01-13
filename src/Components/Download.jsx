@@ -1,26 +1,29 @@
 import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
+import { toPng } from "html-to-image";
 
-export const downloadPDF = () => {
-  const input = document.getElementById("invoice-content");
-  console.log(input);
-  if (!input) {
+export const downloadPDF = async (element) => {
+  if (!element) {
     alert("Invoice content not found");
     return;
   }
 
-  html2canvas(input, { scale: 2 })
-    .then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4");
-
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-
-      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-      pdf.save("invoice.pdf");
-    })
-    .catch((err) => {
-      console.error("Error generating PDF:", err);
+  try {
+    const dataUrl = await toPng(element, {
+      quality: 1.0,
+      pixelRatio: 2,
+      cacheBust: true,
     });
+
+    const pdf = new jsPDF("p", "mm", "a4");
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+
+    const imgProps = pdf.getImageProperties(dataUrl);
+    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+    pdf.addImage(dataUrl, "PNG", 0, 0, pdfWidth, pdfHeight);
+    pdf.save("invoice.pdf");
+  } catch (err) {
+    console.error("Error generating PDF:", err);
+    alert("Download failed. Check console for details.");
+  }
 };

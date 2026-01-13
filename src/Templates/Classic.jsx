@@ -1,5 +1,5 @@
 import { today } from "../todayDate";
-import { Trash2 } from "lucide-react";
+import { Trash2, ShoppingCart, ReceiptText, Tag } from "lucide-react";
 import { currentTime } from "../Time";
 
 const Classic = ({ items, setItems, sellerName, customerName, invoiceId }) => {
@@ -9,104 +9,178 @@ const Classic = ({ items, setItems, sellerName, customerName, invoiceId }) => {
     setItems(updatedItems);
   };
 
-  const calculateTotal = () => {
-    let total = 0;
-    items.forEach((item) => {
-      const discountValue = (parseFloat(item.discount) || 0) / 100;
-      const itemTotal = item.price * item.count * (1 - discountValue);
-      total += itemTotal;
-    });
-    return total.toFixed(2);
+  const getSubtotal = () => {
+    return items.reduce((acc, item) => acc + item.price * item.count, 0);
   };
 
+  const getTotalDiscountAmount = () => {
+    return items.reduce((acc, item) => {
+      const discPercent = (parseFloat(item.discount) || 0) / 100;
+      return acc + item.price * item.count * discPercent;
+    }, 0);
+  };
+
+  const subtotal = getSubtotal();
+  const totalDiscount = getTotalDiscountAmount();
+  const grandTotal = subtotal - totalDiscount;
+
   return (
-    <div className="my-3 pt-4">
-      <div className="sm:flex items-center justify-between ">
-        <h4 className="text-2xl uppercase font-semibold">
-          Invoice <span className="text-[#555] text-xl">##INV-{invoiceId}</span>
-        </h4>
-        <span className="font-medium max-sm:mt-2">
-          Date: <span className="text-[#555]">{today}</span>
-        </span>
-      </div>
-      {/* Customer Name */}
-      <div className="sm:flex items-center justify-between">
-        <div className="flex items-center gap-2 mt-4">
-          <h3 className="font-semibold">Seller Name:</h3>
-          <h4>{sellerName}</h4>
+    <div className="bg-white p-10 flex flex-col shadow-sm border border-gray-100">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row justify-between items-start border-b-4 border-black pb-8">
+        <div className="space-y-3">
+          <div className="flex items-center gap-2 text-black">
+            <ReceiptText size={36} strokeWidth={2.5} />
+            <h1 className="text-4xl font-black tracking-tighter uppercase">
+              Invoice
+            </h1>
+          </div>
+          <p className="text-xs font-mono font-bold text-white bg-black px-3 py-1 inline-block uppercase tracking-widest">
+            Ref: #INV-{invoiceId}
+          </p>
         </div>
-        <div className="flex items-center gap-2 mt-4">
-          <h3 className="font-semibold">Customer Name:</h3>
-          <h4>{customerName}</h4>
+
+        <div className="text-right mt-4 sm:mt-0">
+          <h2 className="text-xl font-black uppercase text-gray-900">
+            {sellerName || "Your Company"}
+          </h2>
+          <p className="text-sm font-medium text-gray-500 mt-1">{today}</p>
+          <p className="text-[10px] text-gray-400 uppercase tracking-[0.2em] font-bold">
+            {currentTime}
+          </p>
         </div>
       </div>
+
+      {/* Parties */}
+      <div className="grid grid-cols-2 gap-8 my-12">
+        <div className="border-l-4 border-gray-900 pl-4">
+          <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">
+            Billed To
+          </p>
+          <h3 className="text-2xl font-bold text-gray-900 uppercase tracking-tight">
+            {customerName || "Valued Customer"}
+          </h3>
+        </div>
+        <div className="text-right flex flex-col items-end justify-center">
+          <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">
+            Payment Status
+          </p>
+          <span className="text-[11px] font-black border-2 border-green-600 text-green-600 px-4 py-1 rounded uppercase italic">
+            Paid in Full
+          </span>
+        </div>
+      </div>
+
       {/* Table */}
-      <div className="mt-4">
-        <div className="relative w-full overflow-auto">
-          <table className="w-full text-sm border-collapse mt-4">
-            <thead>
-              <tr className="border-b border-[#e5e7eb] text-[#737373] hover:bg-gray-50">
-                <th className="h-12 px-4 text-left font-medium w-15">#</th>
-                <th className="h-12 px-4 text-left font-medium whitespace-nowrap">
-                  Item Name
-                </th>
-                <th className="h-12 px-4 text-left font-medium">Quantity</th>
-                <th className="h-12 px-4 text-left font-medium">Price</th>
-                <th className="h-12 px-4 text-left font-medium">Discount</th>
-                <th className="h-12 px-4 text-left font-medium w-0">Total</th>
-                <th className="h-12 px-4 text-right w-0"></th>
-              </tr>
-            </thead>
-            <tbody className="divide-y group divide-[#e5e7eb]">
-              {items.map((item, index) => {
-                const discountValue = (parseFloat(item.discount) || 0) / 100;
-                const total = item.price * item.count * (1 - discountValue);
-                return (
-                  <tr
-                    key={index}
-                    className="border-b border-[#e5e7eb] hover:bg-gray-50"
-                  >
-                    <td className="p-4">{index + 1}</td>
-                    <td className="p-4">{item.itemName}</td>
-                    <td className="p-4">{item.count}</td>
-                    <td className="p-4">{item.price}</td>
-                    <td className="p-4">{item.discount}</td>
-                    <td className="p-4 w-0">{total.toFixed(2)}</td>
-                    <td className="p-4 opacity-0 group-hover:opacity-100 text-right cursor-pointer w-0">
-                      <Trash2
-                        size={16}
-                        className="text-black hover:text-red-500"
-                        onClick={() => deleteItem(index)}
-                      />
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-            <tfoot className="border-t border-[#e5e7eb] bg-[#f9fafb] font-medium">
-              <tr>
-                <td className="p-4 font-bold" colSpan="5">
-                  Total
-                </td>
-                <td className="p-4 text-right font-bold" colSpan="2">
-                  {calculateTotal()}
-                </td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
+      <div className="grow">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="border-b-2 border-gray-900">
+              <th className="py-4 text-left font-black uppercase text-[10px] text-gray-400 tracking-widest w-12">
+                #
+              </th>
+              <th className="py-4 text-left font-black uppercase text-[10px] text-gray-400 tracking-widest">
+                Description
+              </th>
+              <th className="py-4 text-center font-black uppercase text-[10px] text-gray-400 tracking-widest">
+                Qty
+              </th>
+              <th className="py-4 text-right font-black uppercase text-[10px] text-gray-400 tracking-widest">
+                Unit Price
+              </th>
+              <th className="py-4 text-right font-black uppercase text-[10px] text-gray-400 tracking-widest">
+                Discount
+              </th>
+              <th className="py-4 text-right font-black uppercase text-[10px] text-gray-400 tracking-widest">
+                Line Total
+              </th>
+              <th className="py-4 w-10"></th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-100">
+            {items.map((item, index) => {
+              const discPercent = (parseFloat(item.discount) || 0) / 100;
+              const lineTotal = item.price * item.count * (1 - discPercent);
+              return (
+                <tr key={index} className="group hover:bg-gray-50/50">
+                  <td className="py-5 text-gray-400 font-mono text-xs">
+                    {index + 1}
+                  </td>
+                  <td className="py-5 font-bold text-gray-900 uppercase tracking-tight">
+                    {item.itemName}
+                  </td>
+                  <td className="py-5 text-center font-bold text-gray-600">
+                    {item.count}
+                  </td>
+                  <td className="py-5 text-right font-medium text-gray-600">
+                    ${item.price.toFixed(2)}
+                  </td>
+                  <td className="py-5 text-right font-bold text-red-500 italic">
+                    -{item.discount}
+                  </td>
+                  <td className="py-5 text-right font-black text-gray-900">
+                    ${lineTotal.toFixed(2)}
+                  </td>
+                  <td className="py-5 text-right">
+                    <button
+                      onClick={() => deleteItem(index)}
+                      className="p-1 opacity-0 group-hover:opacity-100 hover:text-red-600 transition-all"
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+
+        {items.length === 0 && (
+          <div className="py-20 text-center border-2 border-dashed border-gray-100 rounded-xl mt-6">
+            <ShoppingCart className="mx-auto text-gray-200 mb-2" size={48} />
+            <p className="text-gray-400 font-bold uppercase text-xs tracking-widest">
+              No Items Found
+            </p>
+          </div>
+        )}
       </div>
-      {/* Footer Message */}
-      {items.length > 0 && (
-        <div className="text-left mt-7 pt-4 text-[13px] text-[#64748b]">
-          <div className="text-center text-[#64748b] mt-3 font-[14px] pb-5">
-            <div>Thank you for coming to our store!</div>
-            <div>
-              Generated on {today} at {currentTime}
+
+      {/* Summary */}
+      <div className="mt-12 border-t-4 border-gray-900 pt-8">
+        <div className="flex justify-between items-start">
+          <div className="w-full max-w-xs space-y-3">
+            <div className="flex justify-between text-sm font-bold text-gray-500">
+              <span className="uppercase tracking-widest">Subtotal</span>
+              <span className="text-gray-900 font-black">
+                ${subtotal.toFixed(2)}
+              </span>
+            </div>
+            <div className="flex justify-between text-sm font-bold">
+              <span className="uppercase tracking-widest text-gray-500 flex items-center gap-1">
+                Discount <Tag size={12} className="text-red-500" />
+              </span>
+              <span className="text-red-600 font-black">
+                -${totalDiscount.toFixed(2)}
+              </span>
+            </div>
+            <div className="flex justify-between items-center border-t-2 border-gray-100 pt-4">
+              <span className="text-xl font-black uppercase italic tracking-tighter">
+                Total
+              </span>
+              <span className="text-3xl font-black text-black tracking-tighter">
+                ${grandTotal.toFixed(2)}
+              </span>
             </div>
           </div>
         </div>
-      )}
+      </div>
+
+      {/* Footer */}
+      <div className="mt-16 text-center border-t border-gray-100 pt-10">
+        <p className="mt-6 text-[10px] text-gray-400 uppercase tracking-widest leading-relaxed">
+          Invoice Generated on • {today} • {currentTime}
+        </p>
+      </div>
     </div>
   );
 };

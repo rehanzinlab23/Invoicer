@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { Layout, Eye, Download, Printer } from "lucide-react";
 import Line from "./Line";
 import InvoiceActions from "./InvoiceActions";
 import { InvoiceTemplateSelect } from "./InvoiceTemplateSelect";
+
+// Templates Import
 import Classic from "../Templates/Classic";
 import SoftShadow from "../Templates/SoftShadow";
 import StripeEdge from "../Templates/StripeEdge";
@@ -17,6 +20,7 @@ const InvoicePreview = ({
   invoiceId,
 }) => {
   const [selectedTemplate, setSelectedTemplate] = useState("Classic");
+  const invoiceRef = useRef(null);
 
   const templates = {
     Classic: (
@@ -76,24 +80,76 @@ const InvoicePreview = ({
   };
 
   return (
-    <div className="mt-10">
-      <div className="rounded-lg border border-[#e5e7eb] bg-white text-black shadow-sm">
-        <div className="flex justify-between items-center space-y-1.5 p-6 pb-4">
-          <h3 className="text-2xl font-semibold leading-none tracking-tight uppercase">
-            Preview:
-          </h3>
-          {/* Select */}
+    <div className="mt-12 max-w-5xl mx-auto px-4 pb-20">
+      {/* --- Section Header --- */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
+        <div>
+          <div className="flex items-center gap-2 mb-1">
+            <div className="p-2 bg-black rounded-lg">
+              <Eye size={20} className="text-white" />
+            </div>
+            <h2 className="text-sm font-bold tracking-widest text-gray-500 uppercase">
+              Live Preview
+            </h2>
+          </div>
+          <h1 className="text-3xl font-extrabold text-gray-900">
+            Customize Your Design
+          </h1>
+        </div>
+
+        {/* Template Selector Card */}
+        <div className="bg-white p-2 rounded-xl border border-gray-200 shadow-sm flex items-center gap-3">
+          <span className="pl-3 text-xs font-bold text-gray-400 uppercase flex items-center gap-2">
+            <Layout size={14} /> Style
+          </span>
           <InvoiceTemplateSelect
             value={selectedTemplate}
             onChange={setSelectedTemplate}
           />
         </div>
-        <Line />
-        <div className="p-6 pt-0">
-          <div id="invoice-content">{templates[selectedTemplate]}</div>
+      </div>
+
+      {/* --- Preview Canvas --- */}
+      <div className="relative group">
+        {/* Decorative elements for the "Canvas" feel */}
+        <div className="absolute -inset-1 bg-linear-to-r from-gray-200 to-gray-100 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+
+        <div className="relative rounded-2xl border border-gray-200 bg-gray-50/50 shadow-2xl overflow-hidden">
+          {/* Top Bar of the Canvas */}
+          <div className="flex items-center justify-between px-6 py-3 bg-white border-b border-gray-200">
+            <div className="flex gap-1.5">
+              <div className="w-3 h-3 rounded-full bg-red-400"></div>
+              <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+              <div className="w-3 h-3 rounded-full bg-green-400"></div>
+            </div>
+            <span className="text-xs font-medium text-gray-400 italic">
+              Template: {selectedTemplate}
+            </span>
+          </div>
+
+          {/* Actual Invoice Content */}
+          <div className="p-4 md:p-10 flex justify-center overflow-x-auto">
+            <div
+              id="invoice-content"
+              ref={invoiceRef}
+              className="shadow-[0_0_50px_-12px_rgba(0,0,0,0.15)] min-w-175 transform transition-transform duration-300"
+            >
+              {templates[selectedTemplate]}
+            </div>
+          </div>
         </div>
       </div>
-      <InvoiceActions />
+
+      {/* --- Action Buttons Container --- */}
+      <div className="mt-8">
+        <InvoiceActions invoiceRef={invoiceRef} />
+      </div>
+
+      {/* Helper Note */}
+      <p className="mt-4 text-center text-sm text-gray-400">
+        Changes are saved automatically. Ensure all details are correct before
+        downloading.
+      </p>
     </div>
   );
 };
