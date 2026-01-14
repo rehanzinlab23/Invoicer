@@ -3,7 +3,6 @@
 @custom-variant dark (&:is(.dark *));
 
 body {
-     background-color: #f0f5f9;
      font-family: Outfit, sans-serif;
 }
 

@@ -1,33 +1,41 @@
 import { downloadPDF } from "../Components/Download";
-import { Download, Printer } from "lucide-react";
+import { Download, Printer, FilePlus, Save } from "lucide-react";
+import toast from "react-hot-toast";
 
-const Btns = ({ invoiceRef }) => {
+const Btns = ({ invoiceRef, handleNewInvoice, toggleSavedInvoices }) => {
+  const handleNewInvoiceClick = () => {
+    handleNewInvoice();
+    toast.success("New invoice created successfully!");
+  };
+
   return (
-    <div className="p-6 pt-0">
-      <div className="flex  gap-4 mt-1 pt-4">
-        <button
-          onClick={() => downloadPDF(invoiceRef.current)}
-          className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium cursor-pointer bg-black text-white hover:bg-black/80 h-10 px-4 py-2"
-        >
-          <Download
-            size={20}
-            color="#ffffff"
-            strokeWidth={2.5}
-            className="mr-2"
-          />
-          Download Bill
-        </button>
+    <div className="flex flex-wrap gap-3">
+      <button
+        onClick={() => downloadPDF(invoiceRef.current)}
+        className="inline-flex items-center justify-center whitespace-nowrap rounded-2xl text-sm font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-white dark:text-slate-900 bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-slate-200 h-10 px-6 cursor-pointer"
+      >
+        <Download size={18} className="mr-2" />
+        Download
+      </button>
 
-        <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium cursor-pointer bg-black text-white hover:bg-black/80 h-10 px-4 py-2">
-          <Printer
-            size={20}
-            color="#ffffff"
-            strokeWidth={2.5}
-            className="mr-2"
-          />
-          Print Bill
-        </button>
-      </div>
+      <button className="inline-flex items-center justify-center whitespace-nowrap rounded-2xl text-sm font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-white dark:text-slate-900 bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-slate-200 h-10 px-6 cursor-pointer">
+        <Printer size={18} className="mr-2" />
+        Print
+      </button>
+      <button
+        onClick={handleNewInvoiceClick}
+        className="inline-flex items-center justify-center whitespace-nowrap rounded-2xl text-sm font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-white dark:text-slate-900 bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-slate-200 h-10 px-6 cursor-pointer"
+      >
+        <FilePlus size={18} className="mr-2" />
+        New Invoice
+      </button>
+      <button
+        onClick={toggleSavedInvoices}
+        className="inline-flex items-center justify-center whitespace-nowrap rounded-2xl text-sm font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-white dark:text-slate-900 bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-slate-200 h-10 px-6 cursor-pointer"
+      >
+        <Save size={18} className="mr-2" />
+        Saved Invoices
+      </button>
     </div>
   );
 };
