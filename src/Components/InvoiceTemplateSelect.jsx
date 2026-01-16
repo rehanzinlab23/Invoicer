@@ -6,7 +6,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/Components/ui/select";
 import { Layout } from "lucide-react";
 
 export function InvoiceTemplateSelect({ value, onChange }) {
