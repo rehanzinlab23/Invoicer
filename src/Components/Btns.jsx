@@ -1,13 +1,11 @@
 import { downloadPDF } from "../Components/Download";
 import { Download, Printer, FilePlus, Save } from "lucide-react";
 import toast from "react-hot-toast";
-import { useReactToPrint } from "react-to-print";
 
 const Btns = ({ invoiceRef, handleNewInvoice, toggleSavedInvoices }) => {
-  const handlePrint = useReactToPrint({
-    content: () => invoiceRef.current,
-    documentTitle: "invoice-content",
-  });
+  const handlePrint = () => {
+    window.print();
+  };
 
   const handleNewInvoiceClick = () => {
     handleNewInvoice();
