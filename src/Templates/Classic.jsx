@@ -116,7 +116,7 @@ const Classic = ({ items, setItems, sellerName, customerName, invoiceId }) => {
                   <td className="py-5 text-right font-black text-gray-900 dark:text-gray-100">
                     ${lineTotal.toFixed(2)}
                   </td>
-                  <td className="py-5 text-right">
+                  <td className="py-5 text-right print:hidden">
                     <button
                       onClick={() => deleteItem(index)}
                       className="p-1 opacity-0 group-hover:opacity-100 text-gray-400 dark:text-gray-600 hover:text-red-600 dark:hover:text-red-500 transition-all"

@@ -114,7 +114,7 @@ const SoftShadow = ({
                       <td className="py-6 text-right px-2 font-bold text-slate-800 dark:text-slate-100">
                         ${rowTotal.toFixed(2)}
                       </td>
-                      <td className="py-6 text-right">
+                      <td className="py-6 text-right print:hidden">
                         <button
                           onClick={() => deleteItem(index)}
                           className="opacity-0 group-hover:opacity-100 p-2 text-slate-300 dark:text-slate-600 hover:text-red-500 transition-all"

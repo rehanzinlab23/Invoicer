@@ -130,7 +130,7 @@ const Elegant = ({ items, setItems, sellerName, customerName, invoiceId }) => {
                         ${amount.toFixed(2)}
                       </td>
 
-                      <td className="py-3 px-1 text-right">
+                      <td className="py-3 px-1 text-right print:hidden">
                         <button
                           onClick={() => deleteItem(index)}
                           className="p-1 rounded hover:bg-red-50 dark:hover:bg-red-900/50"

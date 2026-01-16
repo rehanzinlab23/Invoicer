@@ -110,7 +110,7 @@ const StripeEdge = ({
                       <td className="py-4 text-right font-bold text-slate-900 dark:text-slate-100 text-sm">
                         ${rowTotal.toFixed(2)}
                       </td>
-                      <td className="py-4 text-right">
+                      <td className="py-4 text-right print:hidden">
                         <button
                           onClick={() => deleteItem(index)}
                           className="opacity-0 group-hover:opacity-100 p-1 text-slate-300 dark:text-slate-600 hover:text-red-500 transition-all"

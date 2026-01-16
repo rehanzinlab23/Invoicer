@@ -143,7 +143,7 @@ const Corporate = ({
                         ${amount.toFixed(2)}
                       </td>
 
-                      <td className="py-3 px-1 text-right">
+                      <td className="py-3 px-1 text-right print:hidden">
                         <button
                           onClick={() => deleteItem(index)}
                           className="p-1 hover:text-red-500 text-slate-300 dark:text-slate-600 dark:hover:text-red-500"
