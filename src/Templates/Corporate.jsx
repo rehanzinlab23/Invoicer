@@ -168,7 +168,7 @@ const Corporate = ({
           )}
           {/* Calculations */}
           <div className="flex justify-end mt-16">
-            <div className="w-full sm:w-80 text-sm space-y-2 dark:text-slate-300">
+            <div className="w-full sm:w-80 text-sm sm:text-xs space-y-2 dark:text-slate-300">
               <div className="flex justify-between">
                 <span className="text-slate-500 dark:text-slate-400">
                   Subtotal
@@ -184,10 +184,10 @@ const Corporate = ({
                 </span>
               </div>
               <div className="pt-3 border-t-2 border-slate-900 dark:border-slate-200 flex justify-between items-center">
-                <span className="uppercase font-black text-sm dark:text-white">
+                <span className="uppercase font-black text-sm sm:text-[10px] dark:text-white">
                   Total Amount
                 </span>
-                <span className="text-xl sm:text-2xl font-black dark:text-white">
+                <span className="text-xl sm:text-lg font-black dark:text-white">
                   ${total()}
                 </span>
               </div>

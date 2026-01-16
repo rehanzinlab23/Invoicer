@@ -153,26 +153,27 @@ const Minimal = ({ items, setItems, sellerName, customerName, invoiceId }) => {
         {/* Calculation */}
         <div className="flex justify-end mt-16">
           <div className="w-full sm:w-64 space-y-4">
-            <div className="flex justify-between text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+            <div className="flex justify-between text-xs sm:text-[9px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">
               <span>Subtotal</span>
               <span className="text-slate-900 dark:text-slate-200">
                 ${SubTotal()}
               </span>
             </div>
-            <div className="flex justify-between text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+            <div className="flex justify-between text-xs sm:text-[9px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">
               <span>Discount</span>
               <span className="text-red-600">-{calculateTotalDiscount()}%</span>
             </div>
             <div className="pt-6 border-t border-slate-200 dark:border-slate-700 flex justify-between items-end">
-              <span className="text-[10px] font-black uppercase tracking-[0.3em]">
+              <span className="text-[10px] sm:text-[9px] font-black uppercase tracking-[0.3em]">
                 Total Amount
               </span>
-              <span className="text-4xl font-black tracking-tighter">
+              <span className="text-4xl sm:text-3xl font-black tracking-tighter">
                 ${calculateTotal()}
               </span>
             </div>
           </div>
         </div>
+
         {/* Footer */}
         <div className="mt-12 text-center border-t border-gray-200 dark:border-gray-800 pt-6 w-full">
           <p className="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] font-medium leading-relaxed">

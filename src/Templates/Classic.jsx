@@ -145,13 +145,13 @@ const Classic = ({ items, setItems, sellerName, customerName, invoiceId }) => {
       <div className="mt-12 border-t-4 border-gray-900 dark:border-gray-100 pt-8">
         <div className="flex justify-between items-start">
           <div className="w-full max-w-xs space-y-3">
-            <div className="flex justify-between text-sm font-bold text-gray-500 dark:text-gray-400">
+            <div className="flex justify-between text-sm sm:text-xs font-bold text-gray-500 dark:text-gray-400">
               <span className="uppercase tracking-widest">Subtotal</span>
               <span className="text-gray-900 dark:text-gray-100 font-black">
                 ${subtotal.toFixed(2)}
               </span>
             </div>
-            <div className="flex justify-between text-sm font-bold">
+            <div className="flex justify-between text-sm sm:text-xs font-bold">
               <span className="uppercase tracking-widest text-gray-500 dark:text-gray-400 flex items-center gap-1">
                 Discount <Tag size={12} className="text-red-500" />
               </span>
@@ -160,16 +160,17 @@ const Classic = ({ items, setItems, sellerName, customerName, invoiceId }) => {
               </span>
             </div>
             <div className="flex justify-between items-center border-t-2 border-gray-100 dark:border-gray-700 pt-4">
-              <span className="text-xl font-black uppercase italic tracking-tighter text-gray-800 dark:text-gray-200">
+              <span className="text-xl sm:text-lg font-black uppercase italic tracking-tighter text-gray-800 dark:text-gray-200">
                 Total
               </span>
-              <span className="text-3xl font-black text-black dark:text-white tracking-tighter">
+              <span className="text-3xl sm:text-2xl font-black text-black dark:text-white tracking-tighter">
                 ${grandTotal.toFixed(2)}
               </span>
             </div>
           </div>
         </div>
       </div>
+
       {/* Footer */}
       <div className="mt-16 text-center border-t border-gray-100 dark:border-gray-800 pt-10">
         <p className="mt-6 text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-widest leading-relaxed">

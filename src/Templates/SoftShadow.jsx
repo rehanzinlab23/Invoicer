@@ -142,7 +142,7 @@ const SoftShadow = ({
           {/* Calculations */}
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 bg-slate-50 dark:bg-slate-800/50 rounded-3xl p-8 gap-8 items-center border border-slate-100 dark:border-slate-800">
             <div className="space-y-3">
-              <div className="flex justify-between text-sm font-medium">
+              <div className="flex justify-between text-sm sm:text-xs font-medium">
                 <span className="text-slate-500 dark:text-slate-400">
                   Subtotal
                 </span>
@@ -150,7 +150,7 @@ const SoftShadow = ({
                   ${subtotal.toFixed(2)}
                 </span>
               </div>
-              <div className="flex justify-between text-sm font-medium">
+              <div className="flex justify-between text-sm sm:text-xs font-medium">
                 <span className="text-slate-500 dark:text-slate-400 flex items-center gap-1">
                   Total Discount <Tag size={12} className="text-red-400" />
                 </span>
@@ -159,10 +159,10 @@ const SoftShadow = ({
                 </span>
               </div>
               <div className="flex justify-between items-center pt-3 border-t border-slate-200 dark:border-slate-700">
-                <span className="text-slate-900 dark:text-slate-100 font-black uppercase text-xs tracking-widest">
+                <span className="text-slate-900 dark:text-slate-100 font-black uppercase text-xs sm:text-[10px] tracking-widest">
                   Grand Total
                 </span>
-                <span className="text-3xl font-black text-blue-600 dark:text-blue-400 tracking-tighter">
+                <span className="text-3xl sm:text-2xl font-black text-blue-600 dark:text-blue-400 tracking-tighter">
                   ${grandTotal.toFixed(2)}
                 </span>
               </div>

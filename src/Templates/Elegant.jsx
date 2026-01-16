@@ -152,7 +152,7 @@ const Elegant = ({ items, setItems, sellerName, customerName, invoiceId }) => {
           </div>
           {/* Calculations */}
           <div className="flex justify-end mt-8">
-            <div className="w-full sm:w-72 font-sans text-sm dark:text-slate-200">
+            <div className="w-full sm:w-72 font-sans text-sm sm:text-xs dark:text-slate-200">
               <div className="flex justify-between py-2">
                 <span className="text-slate-400 dark:text-slate-500">
                   Subtotal
@@ -168,15 +168,16 @@ const Elegant = ({ items, setItems, sellerName, customerName, invoiceId }) => {
                 </span>
               </div>
               <div className="flex justify-between items-center pt-4 border-t dark:border-slate-800">
-                <span className="text-xs uppercase tracking-widest font-bold">
+                <span className="text-xs sm:text-[10px] uppercase tracking-widest font-bold">
                   Total Due
                 </span>
-                <span className="text-2xl sm:text-3xl font-light">
+                <span className="text-2xl sm:text-xl font-light">
                   ${total()}
                 </span>
               </div>
             </div>
           </div>
+
           {/* FOOTER */}
           <div className="mt-10 pt-6 border-t dark:border-slate-800 text-center">
             <div className="mx-auto w-full max-w-xs h-px bg-slate-100 dark:bg-slate-800 mb-3" />

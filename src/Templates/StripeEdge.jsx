@@ -141,7 +141,7 @@ const StripeEdge = ({
       <div className="mt-auto border-t border-slate-100 dark:border-slate-800 p-10 bg-slate-50/50 dark:bg-slate-800/50">
         <div className="flex flex-col items-center">
           <div className="w-full md:w-72 space-y-2.5">
-            <div className="flex justify-between text-xs font-medium">
+            <div className="flex justify-between text-xs sm:text-[10px] font-medium">
               <span className="text-slate-500 dark:text-slate-400 uppercase tracking-tighter">
                 Subtotal
               </span>
@@ -149,7 +149,7 @@ const StripeEdge = ({
                 ${subtotal.toFixed(2)}
               </span>
             </div>
-            <div className="flex justify-between text-xs font-medium border-b border-slate-200 dark:border-slate-700 pb-2">
+            <div className="flex justify-between text-xs sm:text-[10px] font-medium border-b border-slate-200 dark:border-slate-700 pb-2">
               <span className="text-slate-500 dark:text-slate-400 uppercase tracking-tighter">
                 Total Discount
               </span>
@@ -158,10 +158,10 @@ const StripeEdge = ({
               </span>
             </div>
             <div className="pt-2 flex justify-between items-center">
-              <span className="text-xs font-black uppercase text-slate-900 dark:text-slate-100 italic tracking-widest">
+              <span className="text-xs sm:text-[10px] font-black uppercase text-slate-900 dark:text-slate-100 italic tracking-widest">
                 Grand Total
               </span>
-              <span className="text-3xl font-black tracking-tight text-slate-900 dark:text-slate-100">
+              <span className="text-3xl sm:text-2xl font-black tracking-tight text-slate-900 dark:text-slate-100">
                 ${grandTotal.toFixed(2)}
               </span>
             </div>
@@ -169,7 +169,7 @@ const StripeEdge = ({
 
           {/* Footer Text */}
           <div className="mt-12 text-center border-t border-gray-200 dark:border-gray-700 pt-6 w-full">
-            <p className="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] font-medium leading-relaxed">
+            <p className="text-[10px] sm:text-[9px] text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] font-medium leading-relaxed">
               Invoice Generated on {today} • {currentTime}
             </p>
           </div>
