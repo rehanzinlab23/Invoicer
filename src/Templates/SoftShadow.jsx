@@ -32,11 +32,8 @@ const SoftShadow = ({
 
   return (
     <>
-      {/* Main Invoice Card */}
       <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_50px_rgba(255,255,255,0.05)] border border-white dark:border-gray-800 overflow-hidden">
-        {/* Top Decorative Bar */}
         <div className="h-2 w-full bg-linear-to-r from-blue-600 via-indigo-500 to-purple-500" />
-
         <div className="p-8">
           {/* Header */}
           <div className="flex flex-col md:flex-row justify-between items-start gap-6">
@@ -46,7 +43,7 @@ const SoftShadow = ({
                   <Zap size={24} className="text-white" fill="white" />
                 </div>
                 <h1 className="text-2xl font-black text-slate-800 dark:text-slate-100 tracking-tight uppercase">
-                  Soft-Flow
+                  Soft-Shadow
                 </h1>
               </div>
               <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em]">
@@ -56,7 +53,6 @@ const SoftShadow = ({
                 {sellerName || "Seller Name"}
               </h2>
             </div>
-
             <div className="text-right">
               <div className="bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-2xl inline-block mb-4">
                 <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">
@@ -74,70 +70,70 @@ const SoftShadow = ({
               </h2>
             </div>
           </div>
-
           {/* Table Section */}
-          <div className="mt-4"></div>
-          <div className="relative w-full overflow-auto">
-            <table className="w-full text-sm border-collapse mt-4">
-              <thead>
-                <tr className="text-slate-400 dark:text-slate-500 text-[11px] uppercase tracking-[0.2em] border-b border-slate-100 dark:border-slate-800">
-                  <th className="pb-4 font-bold text-left px-2">Description</th>
-                  <th className="pb-4 font-bold text-center">Qty</th>
-                  <th className="pb-4 font-bold text-center">Price</th>
-                  <th className="pb-4 font-bold text-center">Disc.</th>
-                  <th className="pb-4 font-bold text-right px-2">Amount</th>
-                  <th className="pb-4 w-10"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {items.map((item, index) => {
-                  const discVal = (parseFloat(item.discount) || 0) / 100;
-                  const rowTotal = item.price * item.count * (1 - discVal);
-                  return (
-                    <tr
-                      key={index}
-                      className="group border-b border-slate-50 dark:border-slate-800 hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors"
-                    >
-                      <td className="py-6 px-2">
-                        <p className="font-bold text-slate-700 dark:text-slate-200 uppercase text-sm">
-                          {item.itemName}
-                        </p>
-                        <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-0.5 tracking-wide">
-                          ITEM ID: {index + 1}
-                        </p>
-                      </td>
-                      <td className="py-6 text-center font-semibold text-slate-600 dark:text-slate-300">
-                        {item.count}
-                      </td>
-                      <td className="py-6 text-center font-semibold text-slate-600 dark:text-slate-300">
-                        ${item.price}
-                      </td>
-                      <td className="py-6 text-center">
-                        <span className="bg-red-50 dark:bg-red-900/50 text-red-500 px-2 py-1 rounded-lg text-[10px] font-black uppercase">
-                          {item.discount}
-                        </span>
-                      </td>
-                      <td className="py-6 text-right px-2 font-bold text-slate-800 dark:text-slate-100">
-                        ${rowTotal.toFixed(2)}
-                      </td>
-                      <td className="py-6 text-right">
-                        <button
-                          onClick={() => deleteItem(index)}
-                          className="opacity-0 group-hover:opacity-100 p-2 text-slate-300 dark:text-slate-600 hover:text-red-500 transition-all"
-                        >
-                          <Trash2 size={16} />
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+          <div id="table" className="mt-4">
+            <div className="relative w-full overflow-auto">
+              <table className="w-full text-sm border-collapse mt-4">
+                <thead>
+                  <tr className="text-slate-400 dark:text-slate-500 text-[11px] uppercase tracking-[0.2em] border-b border-slate-100 dark:border-slate-800">
+                    <th className="pb-4 font-bold text-left px-2">
+                      Description
+                    </th>
+                    <th className="pb-4 font-bold text-center">Qty</th>
+                    <th className="pb-4 font-bold text-center">Price</th>
+                    <th className="pb-4 font-bold text-center">Disc.</th>
+                    <th className="pb-4 font-bold text-right px-2">Amount</th>
+                    <th className="pb-4 w-10"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {items.map((item, index) => {
+                    const discVal = (parseFloat(item.discount) || 0) / 100;
+                    const rowTotal = item.price * item.count * (1 - discVal);
+                    return (
+                      <tr
+                        key={index}
+                        className="group border-b border-slate-50 dark:border-slate-800 hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors"
+                      >
+                        <td className="py-6 px-2">
+                          <p className="font-bold text-slate-700 dark:text-slate-200 uppercase text-sm">
+                            {item.itemName}
+                          </p>
+                          <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-0.5 tracking-wide">
+                            ITEM ID: {index + 1}
+                          </p>
+                        </td>
+                        <td className="py-6 text-center font-semibold text-slate-600 dark:text-slate-300">
+                          {item.count}
+                        </td>
+                        <td className="py-6 text-center font-semibold text-slate-600 dark:text-slate-300">
+                          ${item.price}
+                        </td>
+                        <td className="py-6 text-center">
+                          <span className="bg-red-50 dark:bg-red-900/50 text-red-500 px-2 py-1 rounded-lg text-[10px] font-black uppercase">
+                            {item.discount}
+                          </span>
+                        </td>
+                        <td className="py-6 text-right px-2 font-bold text-slate-800 dark:text-slate-100">
+                          ${rowTotal.toFixed(2)}
+                        </td>
+                        <td className="py-6 text-right">
+                          <button
+                            onClick={() => deleteItem(index)}
+                            className="opacity-0 group-hover:opacity-100 p-2 text-slate-300 dark:text-slate-600 hover:text-red-500 transition-all"
+                          >
+                            <Trash2 size={16} />
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           </div>
-
-          {/* Summary Section */}
+          {/* Calculations */}
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 bg-slate-50 dark:bg-slate-800/50 rounded-3xl p-8 gap-8 items-center border border-slate-100 dark:border-slate-800">
-            {/* Detailed Totals */}
             <div className="space-y-3">
               <div className="flex justify-between text-sm font-medium">
                 <span className="text-slate-500 dark:text-slate-400">
@@ -166,7 +162,6 @@ const SoftShadow = ({
             </div>
           </div>
         </div>
-
         {/* Footer */}
         <div className="flex items-center justify-center pb-8">
           <div className="text-center border-t border-gray-100 dark:border-gray-800 pt-5 w-full mx-8">

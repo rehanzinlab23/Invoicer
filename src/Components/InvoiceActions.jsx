@@ -14,10 +14,7 @@ const InvoiceActions = ({
           {/* Header Section */}
           <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-12 bg-slate-900 dark:bg-white rounded-2xl flex items-center justify-center shadow-lg">
-              <Settings
-                size={22}
-                className="text-white dark:text-slate-900"
-              />
+              <Settings size={22} className="text-white dark:text-slate-900" />
             </div>
             <div>
               <h3 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none">
@@ -28,9 +25,8 @@ const InvoiceActions = ({
               </p>
             </div>
           </div>
-
           <Line />
-
+          {/* Buttons */}
           <div className="mt-8 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             <div className="w-full lg:flex-1">
               <div className="bg-white/40 dark:bg-slate-800/40 p-4 rounded-2xl border dark:border-white/10 border-black/5 shadow-lg">

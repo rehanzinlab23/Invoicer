@@ -37,7 +37,7 @@ const Minimal = ({ items, setItems, sellerName, customerName, invoiceId }) => {
   return (
     <div className="bg-white dark:bg-gray-900 p-8 sm:p-16 font-sans text-slate-900 dark:text-slate-100">
       <div className="max-w-4xl mx-auto">
-        {/* Top Branding Section */}
+        {/* Header */}
         <div className="flex justify-between items-start mb-20">
           <div className="space-y-1">
             <h1 className="text-4xl font-bold tracking-tighter uppercase">
@@ -56,7 +56,6 @@ const Minimal = ({ items, setItems, sellerName, customerName, invoiceId }) => {
             </p>
           </div>
         </div>
-
         {/* Customer Name */}
         <div className="grid grid-cols-2 gap-12 mb-20">
           <div className="space-y-2">
@@ -74,9 +73,8 @@ const Minimal = ({ items, setItems, sellerName, customerName, invoiceId }) => {
             </h2>
           </div>
         </div>
-
         {/* Table Section */}
-        <div className="mt-4">
+        <div id="table" className="mt-4">
           <div className="relative w-full overflow-auto">
             <table className="w-full text-sm border-collapse mt-4">
               <thead>
@@ -143,7 +141,7 @@ const Minimal = ({ items, setItems, sellerName, customerName, invoiceId }) => {
             </table>
           </div>
         </div>
-        {/* Calculation Section */}
+        {/* Calculation */}
         <div className="flex justify-end mt-16">
           <div className="w-full sm:w-64 space-y-4">
             <div className="flex justify-between text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">
@@ -166,8 +164,7 @@ const Minimal = ({ items, setItems, sellerName, customerName, invoiceId }) => {
             </div>
           </div>
         </div>
-
-        {/* Footer Text */}
+        {/* Footer */}
         <div className="mt-12 text-center border-t border-gray-200 dark:border-gray-800 pt-6 w-full">
           <p className="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] font-medium leading-relaxed">
             Invoice Generated on {today} • {currentTime}

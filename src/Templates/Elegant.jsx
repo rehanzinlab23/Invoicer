@@ -30,10 +30,8 @@ const Elegant = ({ items, setItems, sellerName, customerName, invoiceId }) => {
     <div className="font-serif">
       <div className="max-w-4xl mx-auto bg-white dark:bg-gray-900 rounded-2xl border dark:border-gray-800 shadow-sm overflow-hidden">
         <div className="h-1.5 bg-linear-to-r from-slate-100 via-blue-200 to-slate-100 dark:from-slate-800 dark:via-blue-900 dark:to-slate-800" />
-
-        {/* CONTENT */}
         <div className="px-3 py-6 sm:p-10 lg:p-16">
-          {/* HEADER */}
+          {/* Header */}
           <div className="flex flex-col sm:flex-row justify-between gap-6 mb-10 border-b dark:border-gray-800 pb-6">
             <div>
               <div className="flex items-center gap-2 text-blue-400 mb-1">
@@ -63,8 +61,7 @@ const Elegant = ({ items, setItems, sellerName, customerName, invoiceId }) => {
               </p>
             </div>
           </div>
-
-          {/* CLIENT INFO */}
+          {/* Customer Names */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
             <div>
               <p className="text-[10px] uppercase tracking-widest text-blue-500 font-bold mb-1">
@@ -83,9 +80,8 @@ const Elegant = ({ items, setItems, sellerName, customerName, invoiceId }) => {
               </h3>
             </div>
           </div>
-
-          {/* TABLE */}
-          <div className="mt-4">
+          {/* Table Section */}
+          <div id="table" className="mt-4">
             <div className="relative w-full overflow-x-auto">
               <table className="w-full text-sm border-collapse mt-4">
                 <thead>
@@ -158,7 +154,7 @@ const Elegant = ({ items, setItems, sellerName, customerName, invoiceId }) => {
               )}
             </div>
           </div>
-          {/* TOTALS */}
+          {/* Calculations */}
           <div className="flex justify-end mt-8">
             <div className="w-full sm:w-72 font-sans text-sm dark:text-slate-200">
               <div className="flex justify-between py-2">

@@ -19,6 +19,7 @@ const SavedInvoices = ({
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50">
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl w-full max-w-2xl max-h-[80vh] flex flex-col">
+        {/* Header */}
         <div className="p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
           <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
             Saved Invoices
@@ -33,6 +34,7 @@ const SavedInvoices = ({
             />
           </button>
         </div>
+        {/* Modal */}
         <div className="p-6 overflow-y-auto">
           {savedInvoices.length > 0 ? (
             <ul className="space-y-4">

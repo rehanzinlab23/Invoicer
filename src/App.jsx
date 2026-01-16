@@ -5,6 +5,7 @@ import Navbar from "./Components/Navbar";
 const App = () => {
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
+    // Theme Saving in Local Storage
     if (savedTheme) {
       return savedTheme;
     }

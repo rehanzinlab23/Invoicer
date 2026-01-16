@@ -19,10 +19,9 @@ export function InvoiceTemplateSelect({ value, onChange }) {
           className="text-blue-600 dark:text-blue-400 shrink-0"
         />
         <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
-          Design Style
+          Design your Invoice
         </span>
       </div>
-
       <Select value={value} onValueChange={onChange}>
         {/* Trigger */}
         <SelectTrigger
@@ -43,7 +42,6 @@ export function InvoiceTemplateSelect({ value, onChange }) {
         >
           <SelectValue placeholder="Select Style" />
         </SelectTrigger>
-
         {/* Dropdown */}
         <SelectContent
           className="
@@ -57,11 +55,11 @@ export function InvoiceTemplateSelect({ value, onChange }) {
             z-50
           "
         >
+          {/* Template Selection */}
           <SelectGroup>
             <SelectLabel className="text-[8px] sm:text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] px-2 py-1.5">
-              Available Themes
+              Available Templates
             </SelectLabel>
-
             {[
               "Classic",
               "SoftShadow",

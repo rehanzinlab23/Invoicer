@@ -14,11 +14,12 @@ const MainBody = () => {
   const [savedInvoices, setSavedInvoices] = useState([]);
   const [showSavedInvoices, setShowSavedInvoices] = useState(false);
 
+  // Saving Saved Invoices to Local Storage
   useEffect(() => {
     const invoices = JSON.parse(localStorage.getItem("saved_invoices")) || [];
     setSavedInvoices(invoices);
   }, []);
-
+  // Handle New Invoice
   const handleNewInvoice = () => {
     if (items.length === 0 && customerName === "") {
       return;
@@ -58,7 +59,7 @@ const MainBody = () => {
     setSavedInvoices(updatedInvoices);
     localStorage.setItem("saved_invoices", JSON.stringify(updatedInvoices));
   };
-
+  // Search
   const filteredItem = items.filter((item) => {
     return item.itemName.toLowerCase().includes(searchItems.toLowerCase());
   });
@@ -86,6 +87,7 @@ const MainBody = () => {
         handleNewInvoice={handleNewInvoice}
         toggleSavedInvoices={toggleSavedInvoices}
       />
+      {/* Saved Invoices Modal */}
       <SavedInvoices
         savedInvoices={savedInvoices}
         loadInvoice={loadInvoice}
@@ -93,6 +95,7 @@ const MainBody = () => {
         show={showSavedInvoices}
         toggleSavedInvoices={toggleSavedInvoices}
       />
+      {/* Toaster */}
       <Toaster position="bottom-right" reverseOrder={true} />
     </div>
   );

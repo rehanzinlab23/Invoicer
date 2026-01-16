@@ -9,7 +9,6 @@ const Navbar = ({ theme, handleThemeSwitch }) => {
       <div className="w-full max-w-7xl mx-auto px-2 sm:px-0">
         <div className="relative overflow-hidden rounded-4xl sm:rounded-3xl border dark:border-white/10 border-black/10 bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl shadow-2xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.2)] h-16 sm:h-20 flex items-center px-4 sm:px-8 sm:w-full transition-all duration-500">
           <div className="absolute inset-0 bg-linear-to-tr from-white/20 via-white/5 to-transparent pointer-events-none"></div>
-
           <div className="flex items-center justify-between w-full relative z-10">
             {/* Logo */}
             <div className="flex items-center gap-2 sm:gap-4 group">

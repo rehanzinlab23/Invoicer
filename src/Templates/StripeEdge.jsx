@@ -34,8 +34,8 @@ const StripeEdge = ({
     <div className="bg-white dark:bg-gray-900 flex flex-col font-sans border border-gray-200 dark:border-gray-800 shadow-xl overflow-hidden">
       {/* Header Bar */}
       <div className="flex border-b border-gray-100 dark:border-gray-800">
-        <div className="w-16 bg-slate-900 dark:bg-white flex flex-col items-center py-6">
-          <Receipt className="text-white dark:text-slate-900" size={24} />
+        <div className="w-16 bg-slate-900 dark:bg-white flex flex-col items-center justify-center py-6">
+          <Receipt className="text-white dark:text-slate-900" size={32} />
         </div>
         <div className="grow p-8 flex justify-between items-center bg-slate-50 dark:bg-slate-800/50">
           <div>
@@ -56,7 +56,6 @@ const StripeEdge = ({
           </div>
         </div>
       </div>
-
       <div className="p-10 grow">
         {/* Customer Section */}
         <div className="mb-10 border-l-4 border-slate-900 dark:border-slate-100 pl-4">
@@ -67,9 +66,8 @@ const StripeEdge = ({
             {customerName || "Valued Customer"}
           </h3>
         </div>
-
         {/* Table Section */}
-        <div className="mt-4">
+        <div id="table" className="mt-4">
           <div className="relative w-full overflow-auto">
             <table className="w-full text-sm border-collapse mt-4">
               <thead>
@@ -137,7 +135,7 @@ const StripeEdge = ({
           </div>
         </div>
       </div>
-      {/* Summary Footer */}
+      {/* Calculations */}
       <div className="mt-auto border-t border-slate-100 dark:border-slate-800 p-10 bg-slate-50/50 dark:bg-slate-800/50">
         <div className="flex flex-col items-center">
           <div className="w-full md:w-72 space-y-2.5">

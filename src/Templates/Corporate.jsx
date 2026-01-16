@@ -35,11 +35,9 @@ const Corporate = ({
   return (
     <div className="font-sans">
       <div className="max-w-4xl mx-auto bg-white dark:bg-gray-900 border border-slate-200 dark:border-slate-800 rounded-sm shadow-2xl overflow-hidden print:shadow-none print:border-none">
-        {/* Top Accent */}
         <div className="h-2 bg-[#1e293b] dark:bg-white" />
-
         <div className="px-3 py-6 sm:p-10 lg:p-12">
-          {/* HEADER */}
+          {/* Header */}
           <div className="flex flex-col sm:flex-row justify-between gap-6 mb-10">
             <div>
               <h1 className="text-3xl sm:text-4xl font-black text-[#1e293b] dark:text-white tracking-tight mb-2">
@@ -54,7 +52,7 @@ const Corporate = ({
                 </span>
               </div>
             </div>
-
+            {/* Right Side */}
             <div className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-3 rounded-sm text-left sm:text-right sm:min-w-45">
               <p className="text-[9px] uppercase tracking-widest opacity-60 dark:opacity-80">
                 Total Amount
@@ -62,8 +60,7 @@ const Corporate = ({
               <p className="text-xl sm:text-2xl font-bold">${total()}</p>
             </div>
           </div>
-
-          {/* PARTIES */}
+          {/* Customer Name */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
             <div>
               <div className="flex items-center gap-2 text-[#1e293b] dark:text-white font-bold text-xs uppercase tracking-widest border-b dark:border-slate-700 pb-2 mb-2">
@@ -89,9 +86,8 @@ const Corporate = ({
               </p>
             </div>
           </div>
-
-          {/* TABLE */}
-          <div className="mt-4">
+          {/* Table Section */}
+          <div id="table" className="mt-4">
             <div className="relative w-full overflow-auto">
               <table className="w-full text-sm border-collapse mt-4">
                 <thead>
@@ -157,7 +153,7 @@ const Corporate = ({
               </table>
             </div>
           </div>
-          {/* SUMMARY */}
+          {/* Calculations */}
           <div className="flex justify-end mt-16">
             <div className="w-full sm:w-80 text-sm space-y-2 dark:text-slate-300">
               <div className="flex justify-between">
@@ -185,7 +181,7 @@ const Corporate = ({
             </div>
           </div>
 
-          {/* FOOTER */}
+          {/* Footer */}
           <div className="mt-12 pt-6 border-t dark:border-slate-800 text-center">
             <p className="text-[9px] text-slate-400 dark:text-slate-500 uppercase tracking-widest">
               Invoice generated on {today} at {currentTime}

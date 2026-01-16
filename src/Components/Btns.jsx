@@ -10,6 +10,7 @@ const Btns = ({ invoiceRef, handleNewInvoice, toggleSavedInvoices }) => {
 
   return (
     <div className="flex flex-wrap gap-3">
+      {/* Download */}
       <button
         onClick={() => downloadPDF(invoiceRef.current)}
         className="inline-flex items-center justify-center whitespace-nowrap rounded-2xl text-sm font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-white dark:text-slate-900 bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-slate-200 h-10 px-6 cursor-pointer"
@@ -17,11 +18,12 @@ const Btns = ({ invoiceRef, handleNewInvoice, toggleSavedInvoices }) => {
         <Download size={18} className="mr-2" />
         Download
       </button>
-
+      {/* Printer */}
       <button className="inline-flex items-center justify-center whitespace-nowrap rounded-2xl text-sm font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-white dark:text-slate-900 bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-slate-200 h-10 px-6 cursor-pointer">
         <Printer size={18} className="mr-2" />
         Print
       </button>
+      {/* New Invoice */}
       <button
         onClick={handleNewInvoiceClick}
         className="inline-flex items-center justify-center whitespace-nowrap rounded-2xl text-sm font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-white dark:text-slate-900 bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-slate-200 h-10 px-6 cursor-pointer"
@@ -29,6 +31,7 @@ const Btns = ({ invoiceRef, handleNewInvoice, toggleSavedInvoices }) => {
         <FilePlus size={18} className="mr-2" />
         New Invoice
       </button>
+      {/* Saved Invoices */}
       <button
         onClick={toggleSavedInvoices}
         className="inline-flex items-center justify-center whitespace-nowrap rounded-2xl text-sm font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-white dark:text-slate-900 bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-slate-200 h-10 px-6 cursor-pointer"
