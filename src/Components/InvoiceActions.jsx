@@ -8,7 +8,7 @@ const InvoiceActions = ({
   toggleSavedInvoices,
 }) => {
   return (
-    <div className="mt-10 mb-8 px-4 w-[85%] sm:w-auto">
+    <div className="mt-10 mb-8 px-4 w-full">
       <div className="mx-auto max-w-5xl overflow-hidden rounded-[32px] border dark:border-white/10 border-black/10 bg-white/40 dark:bg-slate-900/40 backdrop-blur-2xl shadow-2xl">
         <div className="p-6 sm:p-10">
           {/* Header Section */}

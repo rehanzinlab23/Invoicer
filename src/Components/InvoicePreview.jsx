@@ -97,7 +97,7 @@ const InvoicePreview = ({
         </div>
 
         {/* Template Selector Card */}
-        <div className="bg-white dark:bg-slate-800 p-2 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm flex items-center gap-3 w-[85%] sm:w-auto">
+        <div className="bg-white dark:bg-slate-800 p-2 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm flex items-center gap-3">
           <InvoiceTemplateSelect
             value={selectedTemplate}
             onChange={setSelectedTemplate}
@@ -108,7 +108,7 @@ const InvoicePreview = ({
       {/* Canvas */}
       <div className="relative group">
         <div className="absolute -inset-1 bg-linear-to-r from-gray-200 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-        <div className="relative rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-900/50 shadow-2xl overflow-hidden w-[85%] sm:w-auto">
+        <div className="relative rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-900/50 shadow-2xl overflow-hidden">
           {/* Top Bar */}
           <div className="flex items-center justify-between px-6 py-3 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
             <div className="flex gap-1.5">

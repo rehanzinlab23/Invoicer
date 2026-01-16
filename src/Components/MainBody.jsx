@@ -77,26 +77,28 @@ const MainBody = () => {
         setSearchItems={setSearchItems}
       />
       {/* Right */}
-      <InvoicePreview
-        items={filteredItem}
-        setItems={setItems}
-        sellerName={sellerName}
-        customerName={customerName}
-        searchItems={searchItems}
-        invoiceId={invoiceId}
-        handleNewInvoice={handleNewInvoice}
-        toggleSavedInvoices={toggleSavedInvoices}
-      />
-      {/* Saved Invoices Modal */}
-      <SavedInvoices
-        savedInvoices={savedInvoices}
-        loadInvoice={loadInvoice}
-        deleteInvoice={deleteInvoice}
-        show={showSavedInvoices}
-        toggleSavedInvoices={toggleSavedInvoices}
-      />
-      {/* Toaster */}
-      <Toaster position="bottom-right" reverseOrder={true} />
+      <div>
+        <InvoicePreview
+          items={filteredItem}
+          setItems={setItems}
+          sellerName={sellerName}
+          customerName={customerName}
+          searchItems={searchItems}
+          invoiceId={invoiceId}
+          handleNewInvoice={handleNewInvoice}
+          toggleSavedInvoices={toggleSavedInvoices}
+        />
+        {/* Saved Invoices Modal */}
+        <SavedInvoices
+          savedInvoices={savedInvoices}
+          loadInvoice={loadInvoice}
+          deleteInvoice={deleteInvoice}
+          show={showSavedInvoices}
+          toggleSavedInvoices={toggleSavedInvoices}
+        />
+        {/* Toaster */}
+        <Toaster position="bottom-right" reverseOrder={true} />
+      </div>
     </div>
   );
 };
