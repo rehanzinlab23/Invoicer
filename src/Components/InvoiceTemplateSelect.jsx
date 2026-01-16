@@ -11,7 +11,7 @@ import { Layout } from "lucide-react";
 
 export function InvoiceTemplateSelect({ value, onChange }) {
   return (
-    <div className="flex flex-col gap-1.5 sm:w-full min-w-60">
+    <div className="flex flex-col gap-1.5 sm:w-full min-w-10">
       {/* Label */}
       <div className="flex items-center gap-2 px-1">
         <Layout
