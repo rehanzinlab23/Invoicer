@@ -77,7 +77,7 @@ const MainBody = () => {
         setSearchItems={setSearchItems}
       />
       {/* Right */}
-      <div className="w-lg:max xl:max-w-2xl 2xl:max-w-3xl mx-auto">
+      <div>
         <InvoicePreview
           items={filteredItem}
           setItems={setItems}
