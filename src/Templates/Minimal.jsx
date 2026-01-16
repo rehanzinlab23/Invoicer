@@ -10,10 +10,12 @@ const Minimal = ({ items, setItems, sellerName, customerName, invoiceId }) => {
   };
 
   const calculateTotalDiscount = () => {
-    return items.reduce((acc, item) => {
-      const discPercent = (parseFloat(item.discount) || 0) / 100;
-      return acc + item.price * item.count * discPercent;
-    }, 0);
+    return items
+      .reduce((acc, item) => {
+        const discPercent = (parseFloat(item.discount) || 0) / 100;
+        return acc + item.price * item.count * discPercent;
+      }, 0)
+      .toFixed(2);
   };
 
   const SubTotal = () => {

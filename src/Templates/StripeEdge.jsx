@@ -19,7 +19,7 @@ const StripeEdge = ({
     return items.reduce((acc, item) => acc + item.price * item.count, 0);
   };
 
-  const calculateTotalDiscount = () => {
+  const getTotalDiscountValue = () => {
     return items.reduce((acc, item) => {
       const discPercent = (parseFloat(item.discount) || 0) / 100;
       return acc + item.price * item.count * discPercent;
@@ -27,7 +27,7 @@ const StripeEdge = ({
   };
 
   const subtotal = calculateSubtotal();
-  const discountTotal = calculateTotalDiscount();
+  const discountTotal = getTotalDiscountValue();
   const grandTotal = subtotal - discountTotal;
 
   return (

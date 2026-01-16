@@ -26,10 +26,12 @@ const Corporate = ({
     items.reduce((a, i) => a + i.price * i.count, 0).toFixed(2);
 
   const totalDiscount = () =>
-    items.reduce((a, i) => {
-      const d = (parseFloat(i.discount) || 0) / 100;
-      return a + i.price * i.count * d;
-    }, 0);
+    items
+      .reduce((a, i) => {
+        const d = (parseFloat(i.discount) || 0) / 100;
+        return a + i.price * i.count * d;
+      }, 0)
+      .toFixed(2);
 
   const total = () =>
     items
