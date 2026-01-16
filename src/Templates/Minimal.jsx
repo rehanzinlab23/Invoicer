@@ -1,6 +1,6 @@
 import { today } from "../todayDate";
 import { currentTime } from "../Time";
-import { Trash2 } from "lucide-react";
+import { ShoppingCart, Trash2 } from "lucide-react";
 
 const Minimal = ({ items, setItems, sellerName, customerName, invoiceId }) => {
   const deleteItem = (index) => {
@@ -74,73 +74,82 @@ const Minimal = ({ items, setItems, sellerName, customerName, invoiceId }) => {
           </div>
         </div>
         {/* Table Section */}
-        <div id="table" className="mt-4">
-          <div className="relative w-full overflow-auto">
-            <table className="w-full text-sm border-collapse mt-4">
-              <thead>
-                <tr className="border-b-2 border-slate-900 dark:border-slate-200">
-                  <th className="py-4 text-left text-[11px] font-black uppercase tracking-widest">
-                    Description
-                  </th>
-                  <th className="py-4 text-center text-[11px] font-black uppercase tracking-widest">
-                    Qty
-                  </th>
-                  <th className="py-4 text-right text-[11px] font-black uppercase tracking-widest">
-                    Rate
-                  </th>
-                  <th className="py-4 text-right text-[11px] font-black uppercase tracking-widest">
-                    Disc.
-                  </th>
-                  <th className="py-4 text-right text-[11px] font-black uppercase tracking-widest">
-                    Total
-                  </th>
-                  <th className="py-4 w-8 print:hidden"></th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-                {items.map((item, index) => {
-                  const discountValue = (parseFloat(item.discount) || 0) / 100;
-                  const total = item.price * item.count * (1 - discountValue);
-                  return (
-                    <tr
-                      key={index}
-                      className="group hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors"
-                    >
-                      <td className="py-6 pr-4">
-                        <div className="font-bold text-sm uppercase tracking-tight">
-                          {item.itemName}
-                        </div>
-                        <div className="text-[10px] text-slate-400 dark:text-slate-500 mt-0.5">
-                          ID-#{index + 1}
-                        </div>
-                      </td>
-                      <td className="py-6 px-2 text-center text-sm font-medium text-slate-600 dark:text-slate-300">
-                        {item.count}
-                      </td>
-                      <td className="py-6 px-2 text-right text-sm font-medium text-slate-600 dark:text-slate-300">
-                        ${item.price}
-                      </td>
-                      <td className="py-6 px-2 text-right text-sm font-bold text-red-600">
-                        {item.discount}
-                      </td>
-                      <td className="py-6 pl-4 text-right text-sm font-black">
-                        ${total.toFixed(2)}
-                      </td>
-                      <td className="py-6 pl-4 text-right print:hidden">
-                        <button
-                          onClick={() => deleteItem(index)}
-                          className="opacity-0 group-hover:opacity-100 text-slate-300 dark:text-slate-600 hover:text-red-500 transition-all"
-                        >
-                          <Trash2 size={14} />
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+        <div className="overflow-x-auto max-w-75 sm:max-w-full">
+          <table className="text-sm border-collapse mt-4">
+            <thead>
+              <tr className="border-b-2 border-slate-900 dark:border-slate-200">
+                <th className="p-4 text-[11px] font-black uppercase tracking-widest">
+                  Description
+                </th>
+                <th className="p-4 text-[11px] font-black uppercase tracking-widest">
+                  Qty
+                </th>
+                <th className="p-4 text-[11px] font-black uppercase tracking-widest">
+                  Price
+                </th>
+                <th className="p-4 text-[11px] font-black uppercase tracking-widest">
+                  Discount
+                </th>
+                <th className="p-4 text-[11px] font-black uppercase tracking-widest">
+                  Total
+                </th>
+                <th className="p-4 w-8 print:hidden"></th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+              {items.map((item, index) => {
+                const discountValue = (parseFloat(item.discount) || 0) / 100;
+                const total = item.price * item.count * (1 - discountValue);
+                return (
+                  <tr
+                    key={index}
+                    className="group hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors"
+                  >
+                    <td className="py-6 pr-4">
+                      <div className="font-bold text-sm uppercase tracking-tight">
+                        {item.itemName}
+                      </div>
+                      <div className="text-[10px] text-slate-400 dark:text-slate-500 mt-0.5">
+                        ITEM #{index + 1}
+                      </div>
+                    </td>
+                    <td className="py-6 px-2 text-center text-sm font-medium text-slate-600 dark:text-slate-300">
+                      {item.count}
+                    </td>
+                    <td className="py-6 px-2 text-right text-sm font-medium text-slate-600 dark:text-slate-300">
+                      ${item.price}
+                    </td>
+                    <td className="py-6 px-2 text-right text-sm font-bold text-red-600">
+                      {item.discount}
+                    </td>
+                    <td className="py-6 pl-4 text-right text-sm font-black">
+                      ${total.toFixed(2)}
+                    </td>
+                    <td className="py-6 pl-4 text-right print:hidden">
+                      <button
+                        onClick={() => deleteItem(index)}
+                        className="opacity-0 group-hover:opacity-100 text-slate-300 dark:text-slate-600 hover:text-red-500 transition-all"
+                      >
+                        <Trash2 size={14} />
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
+        {items.length === 0 && (
+          <div className="py-20 text-center border-2 border-dashed border-gray-100 dark:border-gray-800 rounded-xl mt-6">
+            <ShoppingCart
+              className="mx-auto text-gray-200 dark:text-gray-700 mb-2"
+              size={48}
+            />
+            <p className="text-gray-400 dark:text-gray-600 font-bold uppercase text-xs tracking-widest">
+              No Items Found
+            </p>
+          </div>
+        )}
         {/* Calculation */}
         <div className="flex justify-end mt-16">
           <div className="w-full sm:w-64 space-y-4">

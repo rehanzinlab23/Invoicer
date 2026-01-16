@@ -81,78 +81,74 @@ const Elegant = ({ items, setItems, sellerName, customerName, invoiceId }) => {
             </div>
           </div>
           {/* Table Section */}
-          <div id="table" className="mt-4">
-            <div className="relative w-full overflow-x-auto">
-              <table className="w-full text-sm border-collapse mt-4">
-                <thead>
-                  <tr className="bg-slate-50 dark:bg-slate-800 text-[10px] sm:text-xs uppercase dark:text-slate-400">
-                    <th className="w-[40%] py-3 px-2 text-left">Description</th>
-                    <th className="w-[10%] py-3 px-1 text-center">Qty</th>
-                    <th className="w-[15%] py-3 px-1 text-right">Price</th>
-                    <th className="w-[10%] py-3 px-1 text-right">Disc</th>
-                    <th className="w-[20%] py-3 px-1 text-right">Amount</th>
-                    <th className="w-[5%] py-3 px-1"></th>
-                  </tr>
-                </thead>
+          <div className="overflow-x-auto max-w-75 sm:max-w-full">
+            <table className="text-sm border-collapse mt-4">
+              <thead>
+                <tr className="bg-slate-50 dark:bg-slate-800 text-[10px] sm:text-xs uppercase dark:text-slate-400">
+                  <th className="w-[40%] py-3 px-2">Description</th>
+                  <th className="w-[10%] py-3 px-1">Qty</th>
+                  <th className="w-[15%] py-3 px-1">Price</th>
+                  <th className="w-[10%] py-3 px-1">Discount</th>
+                  <th className="w-[20%] py-3 px-1">Total</th>
+                  <th className="w-[5%] py-3 px-1"></th>
+                </tr>
+              </thead>
+              <tbody className="divide-y dark:divide-slate-800">
+                {items.map((item, index) => {
+                  const d = (parseFloat(item.discount) || 0) / 100;
+                  const amount = item.price * item.count * (1 - d);
 
-                <tbody className="divide-y dark:divide-slate-800">
-                  {items.map((item, index) => {
-                    const d = (parseFloat(item.discount) || 0) / 100;
-                    const amount = item.price * item.count * (1 - d);
+                  return (
+                    <tr
+                      key={index}
+                      className="hover:bg-slate-50 dark:hover:bg-slate-800/50"
+                    >
+                      <td className="py-3 px-2">
+                        <div className="font-bold uppercase text-[11px] sm:text-[13px] wrap-break-word dark:text-slate-200">
+                          {item.itemName}
+                        </div>
+                        <div className="text-[10px] text-slate-400 dark:text-slate-500">
+                          Item #{index + 1}
+                        </div>
+                      </td>
 
-                    return (
-                      <tr
-                        key={index}
-                        className="hover:bg-slate-50 dark:hover:bg-slate-800/50"
-                      >
-                        <td className="py-3 px-2">
-                          <div className="font-bold uppercase text-[11px] sm:text-[13px] wrap-break-word dark:text-slate-200">
-                            {item.itemName}
-                          </div>
-                          <div className="text-[9px] text-slate-400 dark:text-slate-500">
-                            Item #{index + 1}
-                          </div>
-                        </td>
+                      <td className="py-3 px-1 text-center text-xs sm:text-sm dark:text-slate-300">
+                        {item.count}
+                      </td>
 
-                        <td className="py-3 px-1 text-center text-xs sm:text-sm dark:text-slate-300">
-                          {item.count}
-                        </td>
+                      <td className="py-3 px-1 text-right text-xs sm:text-sm dark:text-slate-400">
+                        ${item.price}
+                      </td>
 
-                        <td className="py-3 px-1 text-right text-xs sm:text-sm dark:text-slate-400">
-                          ${item.price}
-                        </td>
+                      <td className="py-3 px-1 text-right text-xs sm:text-sm text-blue-500">
+                        -{item.discount}
+                      </td>
 
-                        <td className="py-3 px-1 text-right text-xs sm:text-sm text-blue-500">
-                          -{item.discount}
-                        </td>
+                      <td className="py-3 px-1 text-right font-bold text-xs sm:text-sm dark:text-slate-100">
+                        ${amount.toFixed(2)}
+                      </td>
 
-                        <td className="py-3 px-1 text-right font-bold text-xs sm:text-sm dark:text-slate-100">
-                          ${amount.toFixed(2)}
-                        </td>
-
-                        <td className="py-3 px-1 text-right">
-                          <button
-                            onClick={() => deleteItem(index)}
-                            className="p-1 rounded hover:bg-red-50 dark:hover:bg-red-900/50"
-                          >
-                            <Trash2 size={12} className="text-red-400" />
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-
-              {items.length === 0 && (
-                <div className="py-12 text-center">
-                  <ShoppingBag className="mx-auto text-slate-300 dark:text-slate-700 mb-2" />
-                  <p className="text-xs text-slate-400 dark:text-slate-600 uppercase tracking-widest">
-                    No items added
-                  </p>
-                </div>
-              )}
-            </div>
+                      <td className="py-3 px-1 text-right">
+                        <button
+                          onClick={() => deleteItem(index)}
+                          className="p-1 rounded hover:bg-red-50 dark:hover:bg-red-900/50"
+                        >
+                          <Trash2 size={12} className="text-red-400" />
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+            {items.length === 0 && (
+              <div className="py-12 text-center">
+                <ShoppingBag className="mx-auto text-slate-300 dark:text-slate-700 mb-2" />
+                <p className="text-xs text-slate-400 dark:text-slate-600 uppercase tracking-widest">
+                  No items found
+                </p>
+              </div>
+            )}
           </div>
           {/* Calculations */}
           <div className="flex justify-end mt-8">
@@ -181,7 +177,6 @@ const Elegant = ({ items, setItems, sellerName, customerName, invoiceId }) => {
               </div>
             </div>
           </div>
-
           {/* FOOTER */}
           <div className="mt-10 pt-6 border-t dark:border-slate-800 text-center">
             <div className="mx-auto w-full max-w-xs h-px bg-slate-100 dark:bg-slate-800 mb-3" />

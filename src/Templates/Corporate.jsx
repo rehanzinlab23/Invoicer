@@ -1,6 +1,13 @@
 import { today } from "../todayDate";
 import { currentTime } from "../Time";
-import { Trash2, Building2, User, Hash, Calendar } from "lucide-react";
+import {
+  Trash2,
+  Building2,
+  User,
+  Hash,
+  Calendar,
+  ShoppingCart,
+} from "lucide-react";
 
 const Corporate = ({
   items,
@@ -87,72 +94,78 @@ const Corporate = ({
             </div>
           </div>
           {/* Table Section */}
-          <div id="table" className="mt-4">
-            <div className="relative w-full overflow-auto">
-              <table className="w-full text-sm border-collapse mt-4">
-                <thead>
-                  <tr className="bg-slate-50 dark:bg-slate-800 border-y dark:border-slate-700 text-[10px] sm:text-xs uppercase dark:text-slate-400">
-                    <th className="w-[40%] py-3 px-2 text-left">
-                      Item Details
-                    </th>
-                    <th className="w-[10%] py-3 px-1 text-center">Qty</th>
-                    <th className="w-[15%] py-3 px-1 text-right">Rate</th>
-                    <th className="w-[10%] py-3 px-1 text-right">Disc %</th>
-                    <th className="w-[20%] py-3 px-1 text-right">Amount</th>
-                    <th className="w-[5%] py-3 px-1"></th>
-                  </tr>
-                </thead>
+          <div className="overflow-x-auto max-w-75 sm:max-w-full">
+            <table className="text-sm border-collapse mt-4">
+              <thead>
+                <tr className="bg-slate-50 dark:bg-slate-800 border-y dark:border-slate-700 text-[10px] sm:text-xs uppercase dark:text-slate-400">
+                  <th className="w-[40%] p-3 px-2">Description</th>
+                  <th className="w-[10%] p-3 px-1">Qty</th>
+                  <th className="w-[15%] p-3 px-1">Price</th>
+                  <th className="w-[10%] p-3 px-1">Discount</th>
+                  <th className="w-[20%] p-3 px-1">Total</th>
+                  <th className="w-[5%] p-3 px-1"></th>
+                </tr>
+              </thead>
+              <tbody className="divide-y dark:divide-slate-800">
+                {items.map((item, index) => {
+                  const d = (parseFloat(item.discount) || 0) / 100;
+                  const amount = item.price * item.count * (1 - d);
 
-                <tbody className="divide-y dark:divide-slate-800">
-                  {items.map((item, index) => {
-                    const d = (parseFloat(item.discount) || 0) / 100;
-                    const amount = item.price * item.count * (1 - d);
+                  return (
+                    <tr
+                      key={index}
+                      className="hover:bg-slate-50 dark:hover:bg-slate-800/50"
+                    >
+                      <td className="py-3 px-2 dark:text-slate-200">
+                        <p className="font-bold uppercase text-[11px] sm:text-sm wrap-break-word">
+                          {item.itemName}
+                        </p>
+                        <p className="text-[9px] text-slate-400">
+                          ITEM #{index + 1}
+                        </p>
+                      </td>
 
-                    return (
-                      <tr
-                        key={index}
-                        className="hover:bg-slate-50 dark:hover:bg-slate-800/50"
-                      >
-                        <td className="py-3 px-2 dark:text-slate-200">
-                          <p className="font-bold uppercase text-[11px] sm:text-sm wrap-break-word">
-                            {item.itemName}
-                          </p>
-                          <p className="text-[9px] text-slate-400">
-                            ITEM-{index + 1}
-                          </p>
-                        </td>
+                      <td className="py-3 px-1 text-center text-xs sm:text-sm font-semibold dark:text-slate-300">
+                        {item.count}
+                      </td>
 
-                        <td className="py-3 px-1 text-center text-xs sm:text-sm font-semibold dark:text-slate-300">
-                          {item.count}
-                        </td>
+                      <td className="py-3 px-1 text-right text-xs sm:text-sm dark:text-slate-400">
+                        ${item.price}
+                      </td>
 
-                        <td className="py-3 px-1 text-right text-xs sm:text-sm dark:text-slate-400">
-                          ${item.price}
-                        </td>
+                      <td className="py-3 px-1 text-right text-xs sm:text-sm font-bold text-red-600">
+                        {item.discount}
+                      </td>
 
-                        <td className="py-3 px-1 text-right text-xs sm:text-sm font-bold text-red-600">
-                          {item.discount}
-                        </td>
+                      <td className="py-3 px-1 text-right text-xs sm:text-sm font-bold dark:text-slate-100">
+                        ${amount.toFixed(2)}
+                      </td>
 
-                        <td className="py-3 px-1 text-right text-xs sm:text-sm font-bold dark:text-slate-100">
-                          ${amount.toFixed(2)}
-                        </td>
-
-                        <td className="py-3 px-1 text-right">
-                          <button
-                            onClick={() => deleteItem(index)}
-                            className="p-1 hover:text-red-500 text-slate-300 dark:text-slate-600 dark:hover:text-red-500"
-                          >
-                            <Trash2 size={12} />
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
+                      <td className="py-3 px-1 text-right">
+                        <button
+                          onClick={() => deleteItem(index)}
+                          className="p-1 hover:text-red-500 text-slate-300 dark:text-slate-600 dark:hover:text-red-500"
+                        >
+                          <Trash2 size={12} />
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
+          {items.length === 0 && (
+            <div className="py-20 text-center border-2 border-dashed border-gray-100 dark:border-gray-800 rounded-xl mt-6">
+              <ShoppingCart
+                className="mx-auto text-gray-200 dark:text-gray-700 mb-2"
+                size={48}
+              />
+              <p className="text-gray-400 dark:text-gray-600 font-bold uppercase text-xs tracking-widest">
+                No Items Found
+              </p>
+            </div>
+          )}
           {/* Calculations */}
           <div className="flex justify-end mt-16">
             <div className="w-full sm:w-80 text-sm space-y-2 dark:text-slate-300">

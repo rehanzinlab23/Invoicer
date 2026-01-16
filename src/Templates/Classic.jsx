@@ -64,88 +64,83 @@ const Classic = ({ items, setItems, sellerName, customerName, invoiceId }) => {
         </div>
       </div>
       {/* Table Section*/}
-      <div data-table-container className="">
-        <div id="table" className="">
-          <div className="w-full overflow-x-auto">
-            <table className="w-full text-sm border-collapse mt-4">
-              <thead>
-                <tr className="border-b-2 border-gray-900 dark:border-gray-100">
-                  <th className="py-4 text-left font-black uppercase text-[10px] text-gray-400 dark:text-gray-500 tracking-widest w-12">
-                    #
-                  </th>
-                  <th className="py-4 text-left font-black uppercase text-[10px] text-gray-400 dark:text-gray-500 tracking-widest  whitespace-nowrap">
-                    Description
-                  </th>
-                  <th className="py-4 text-center font-black uppercase text-[10px] text-gray-400 dark:text-gray-500 tracking-widest">
-                    Qty
-                  </th>
-                  <th className="py-4 text-right font-black uppercase text-[10px] text-gray-400 dark:text-gray-500 tracking-widest whitespace-nowrap">
-                    Unit Price
-                  </th>
-                  <th className="py-4 text-right font-black uppercase text-[10px] text-gray-400 dark:text-gray-500 tracking-widest">
-                    Discount
-                  </th>
-                  <th className="py-4 text-right font-black uppercase text-[10px] text-gray-400 dark:text-gray-500 tracking-widest whitespace-nowrap">
-                    Line Total
-                  </th>
-                  <th className="py-4 w-10"></th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
-                {items.map((item, index) => {
-                  const discPercent = (parseFloat(item.discount) || 0) / 100;
-                  const lineTotal = item.price * item.count * (1 - discPercent);
-                  return (
-                    <tr
-                      key={index}
-                      className="group hover:bg-gray-50/50 dark:hover:bg-gray-800/50"
+      <div className="overflow-x-auto max-w-75 sm:max-w-full">
+        <table className="text-sm border-collapse mt-4">
+          <thead>
+            <tr className="border-b-2 border-gray-900 dark:border-gray-100">
+              <th className="p-4 font-black uppercase text-[10px] text-gray-400 dark:text-gray-500 tracking-widest w-12">
+                #
+              </th>
+              <th className="p-4 font-black uppercase text-[10px] text-gray-400 dark:text-gray-500 tracking-widest  whitespace-nowrap">
+                Description
+              </th>
+              <th className="p-4 font-black uppercase text-[10px] text-gray-400 dark:text-gray-500 tracking-widest">
+                Qty
+              </th>
+              <th className="p-4 font-black uppercase text-[10px] text-gray-400 dark:text-gray-500 tracking-widest whitespace-nowrap">
+                Price
+              </th>
+              <th className="p-4 font-black uppercase text-[10px] text-gray-400 dark:text-gray-500 tracking-widest">
+                Discount
+              </th>
+              <th className="p-4 font-black uppercase text-[10px] text-gray-400 dark:text-gray-500 tracking-widest">
+                Total
+              </th>
+              <th className="p-4 w-10"></th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
+            {items.map((item, index) => {
+              const discPercent = (parseFloat(item.discount) || 0) / 100;
+              const lineTotal = item.price * item.count * (1 - discPercent);
+              return (
+                <tr
+                  key={index}
+                  className="group hover:bg-gray-50/50 dark:hover:bg-gray-800/50"
+                >
+                  <td className="py-5 text-gray-400 dark:text-gray-500 font-mono text-xs">
+                    {index + 1}
+                  </td>
+                  <td className="py-5 font-bold text-gray-900 dark:text-gray-100 uppercase tracking-tight">
+                    {item.itemName}
+                  </td>
+                  <td className="py-5 text-center font-bold text-gray-600 dark:text-gray-300">
+                    {item.count}
+                  </td>
+                  <td className="py-5 text-right font-medium text-gray-600 dark:text-gray-300">
+                    ${item.price.toFixed(2)}
+                  </td>
+                  <td className="py-5 text-right font-bold text-red-500 italic">
+                    -{item.discount}
+                  </td>
+                  <td className="py-5 text-right font-black text-gray-900 dark:text-gray-100">
+                    ${lineTotal.toFixed(2)}
+                  </td>
+                  <td className="py-5 text-right">
+                    <button
+                      onClick={() => deleteItem(index)}
+                      className="p-1 opacity-0 group-hover:opacity-100 text-gray-400 dark:text-gray-600 hover:text-red-600 dark:hover:text-red-500 transition-all"
                     >
-                      <td className="py-5 text-gray-400 dark:text-gray-500 font-mono text-xs">
-                        {index + 1}
-                      </td>
-                      <td className="py-5 font-bold text-gray-900 dark:text-gray-100 uppercase tracking-tight">
-                        {item.itemName}
-                      </td>
-                      <td className="py-5 text-center font-bold text-gray-600 dark:text-gray-300">
-                        {item.count}
-                      </td>
-                      <td className="py-5 text-right font-medium text-gray-600 dark:text-gray-300">
-                        ${item.price.toFixed(2)}
-                      </td>
-                      <td className="py-5 text-right font-bold text-red-500 italic">
-                        -{item.discount}
-                      </td>
-                      <td className="py-5 text-right font-black text-gray-900 dark:text-gray-100">
-                        ${lineTotal.toFixed(2)}
-                      </td>
-                      <td className="py-5 text-right">
-                        <button
-                          onClick={() => deleteItem(index)}
-                          className="p-1 opacity-0 group-hover:opacity-100 text-gray-400 dark:text-gray-600 hover:text-red-600 dark:hover:text-red-500 transition-all"
-                        >
-                          <Trash2 size={16} />
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-
-          {items.length === 0 && (
-            <div className="py-20 text-center border-2 border-dashed border-gray-100 dark:border-gray-800 rounded-xl mt-6">
-              <ShoppingCart
-                className="mx-auto text-gray-200 dark:text-gray-700 mb-2"
-                size={48}
-              />
-              <p className="text-gray-400 dark:text-gray-600 font-bold uppercase text-xs tracking-widest">
-                No Items Found
-              </p>
-            </div>
-          )}
-        </div>
+                      <Trash2 size={16} />
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
+      {items.length === 0 && (
+        <div className="py-20 text-center border-2 border-dashed border-gray-100 dark:border-gray-800 rounded-xl mt-6">
+          <ShoppingCart
+            className="mx-auto text-gray-200 dark:text-gray-700 mb-2"
+            size={48}
+          />
+          <p className="text-gray-400 dark:text-gray-600 font-bold uppercase text-xs tracking-widest">
+            No Items Found
+          </p>
+        </div>
+      )}
       {/* Calculations */}
       <div className="mt-12 border-t-4 border-gray-900 dark:border-gray-100 pt-8">
         <div className="flex justify-between items-start">
@@ -184,5 +179,13 @@ const Classic = ({ items, setItems, sellerName, customerName, invoiceId }) => {
     </div>
   );
 };
+
+// function TableRowTitle({ title, alignment = "left" }) {
+//   return (
+//     <th className="py-4 text-right font-black uppercase text-[10px] text-gray-400 dark:text-gray-500 tracking-widest">
+//       Discount
+//     </th>
+//   );
+// }
 
 export default Classic;

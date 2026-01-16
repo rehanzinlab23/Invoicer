@@ -67,72 +67,74 @@ const StripeEdge = ({
           </h3>
         </div>
         {/* Table Section */}
-        <div id="table" className="mt-4">
-          <div className="relative w-full overflow-auto">
-            <table className="w-full text-sm border-collapse mt-4">
-              <thead>
-                <tr className="border-b border-slate-900 dark:border-slate-100 text-[10px] font-black uppercase text-slate-500 dark:text-slate-400 tracking-wider">
-                  <th className="py-3">Description</th>
-                  <th className="py-3 text-center w-20">Qty</th>
-                  <th className="py-3 text-right w-28">Price</th>
-                  <th className="py-3 text-right w-24">Disc.</th>
-                  <th className="py-3 text-right w-28">Total</th>
-                  <th className="w-8"></th>
-                </tr>
-              </thead>
-              {items.length > 0 && (
-                <tbody className="divide-y divide-gray-50 dark:divide-gray-800">
-                  {items.map((item, index) => {
-                    const discPercent = (parseFloat(item.discount) || 0) / 100;
-                    const rowTotal =
-                      item.price * item.count * (1 - discPercent);
-                    return (
-                      <tr
-                        key={index}
-                        className="group hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors"
-                      >
-                        <td className="py-4 font-bold text-slate-700 dark:text-slate-200 text-sm uppercase">
-                          {item.itemName}
-                        </td>
-                        <td className="py-4 text-center font-bold text-slate-500 dark:text-slate-400 text-sm">
-                          {item.count}
-                        </td>
-                        <td className="py-4 text-right text-slate-600 dark:text-slate-300 text-sm">
-                          ${item.price.toFixed(2)}
-                        </td>
-                        <td className="py-4 text-right text-red-500 text-xs italic font-medium">
-                          -{item.discount}
-                        </td>
-                        <td className="py-4 text-right font-bold text-slate-900 dark:text-slate-100 text-sm">
-                          ${rowTotal.toFixed(2)}
-                        </td>
-                        <td className="py-4 text-right">
-                          <button
-                            onClick={() => deleteItem(index)}
-                            className="opacity-0 group-hover:opacity-100 p-1 text-slate-300 dark:text-slate-600 hover:text-red-500 transition-all"
-                          >
-                            <Trash2 size={14} />
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              )}
-            </table>
-
-            {items.length === 0 && (
-              <div className="py-16 text-center border-2 border-dashed border-gray-100 dark:border-gray-800 rounded-xl mt-6">
-                <ShoppingCart
-                  className="mx-auto text-gray-300 dark:text-gray-700 mb-2"
-                  size={40}
-                />
-                <p className="text-gray-400 dark:text-gray-600 text-xs font-bold uppercase tracking-widest">
-                  No items added yet
-                </p>
-              </div>
+        <div className="overflow-x-auto max-w-75 sm:max-w-full">
+          <table className="text-sm border-collapse mt-4">
+            <thead>
+              <tr className="border-b border-slate-900 dark:border-slate-100 text-[10px] font-black uppercase text-slate-500 dark:text-slate-400 tracking-wider">
+                <th className="p-4 font-black uppercase text-[10px] text-gray-400 dark:text-gray-500 tracking-widest w-12">
+                  #
+                </th>
+                <th className="p-3">Description</th>
+                <th className="p-3 w-20">Qty</th>
+                <th className="p-3 w-28">Price</th>
+                <th className="p-3 w-24">Discount</th>
+                <th className="p-3 w-28">Total</th>
+                <th className="w-8"></th>
+              </tr>
+            </thead>
+            {items.length > 0 && (
+              <tbody className="divide-y divide-gray-50 dark:divide-gray-800">
+                {items.map((item, index) => {
+                  const discPercent = (parseFloat(item.discount) || 0) / 100;
+                  const rowTotal = item.price * item.count * (1 - discPercent);
+                  return (
+                    <tr
+                      key={index}
+                      className="group hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors"
+                    >
+                      <td className="py-4 text-slate-700 dark:text-slate-200 text-sm">
+                        {index + 1}
+                      </td>
+                      <td className="py-4 font-bold text-slate-700 dark:text-slate-200 text-sm uppercase">
+                        {item.itemName}
+                      </td>
+                      <td className="py-4 text-center font-bold text-slate-500 dark:text-slate-400 text-sm">
+                        {item.count}
+                      </td>
+                      <td className="py-4 text-right text-slate-600 dark:text-slate-300 text-sm">
+                        ${item.price.toFixed(2)}
+                      </td>
+                      <td className="py-4 text-right text-red-500 text-xs italic font-medium">
+                        -{item.discount}
+                      </td>
+                      <td className="py-4 text-right font-bold text-slate-900 dark:text-slate-100 text-sm">
+                        ${rowTotal.toFixed(2)}
+                      </td>
+                      <td className="py-4 text-right">
+                        <button
+                          onClick={() => deleteItem(index)}
+                          className="opacity-0 group-hover:opacity-100 p-1 text-slate-300 dark:text-slate-600 hover:text-red-500 transition-all"
+                        >
+                          <Trash2 size={14} />
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
             )}
-          </div>
+          </table>
+          {items.length === 0 && (
+            <div className="py-16 text-center border-2 border-dashed border-gray-100 dark:border-gray-800 rounded-xl mt-6">
+              <ShoppingCart
+                className="mx-auto text-gray-300 dark:text-gray-700 mb-2"
+                size={40}
+              />
+              <p className="text-gray-400 dark:text-gray-600 text-xs font-bold uppercase tracking-widest">
+                No items found
+              </p>
+            </div>
+          )}
         </div>
       </div>
       {/* Calculations */}
