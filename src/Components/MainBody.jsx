@@ -54,7 +54,7 @@ const MainBody = () => {
 
   const deleteInvoice = (invoiceId) => {
     const updatedInvoices = savedInvoices.filter(
-      (invoice) => invoice.id !== invoiceId
+      (invoice) => invoice.id !== invoiceId,
     );
     setSavedInvoices(updatedInvoices);
     localStorage.setItem("saved_invoices", JSON.stringify(updatedInvoices));
@@ -64,7 +64,7 @@ const MainBody = () => {
     return item.itemName.toLowerCase().includes(searchItems.toLowerCase());
   });
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-4">
+    <div className="grid grid-cols-1 min-[1536px]:grid-cols-2 gap-x-4">
       {/* Left */}
       <Invoice
         items={filteredItem}

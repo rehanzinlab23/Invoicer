@@ -120,7 +120,7 @@ const InvoicePreview = ({
               Template: {selectedTemplate}
             </span>
           </div>
-          <div className="p-4 md:p-10 flex justify-center overflow-x-auto">
+          <div className="p-4 md:p-10 flex justify-center overflow-x-hidden">
             <div
               id="invoice-content"
               ref={invoiceRef}
